@@ -11,7 +11,7 @@ The scripts in this repository facilitate the manipulation of data (metadata and
   <img width="720" height="405" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-1-CurSa.jpeg">
 </p>
 
-Figure 1. Mexstrain allows to combine information from Nextstrain and GISAID to make a phylodynamic analysis focused on a single country.
+Figure 1. CurSa allows to combine information from Nextstrain and GISAID to make a phylodynamic analysis focused on a single country.
 
 
 
