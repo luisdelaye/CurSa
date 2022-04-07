@@ -11,7 +11,7 @@
 # 'Country' refers to the name of the Country whose names of divisions and locations are
 # to be curated. For example: Mexico.
 
-# See https://github.com/luisdelaye/Mexstrain/ for more details.
+# See https://github.com/luisdelaye/CurSa/ for more details.
 
 # Author
 # Luis Jose Delaye Arredondo
@@ -199,12 +199,12 @@ if ($machy == 1){
 	print ("\n");
 	print ("------------------------------------------------------------------------\n");
 	print ("Now run substitute_names.pl.\n");
-	print ("See https://github.com/luisdelaye/Mexstrain/ for more details.\n");
+	print ("See https://github.com/luisdelaye/CurSa/ for more details.\n");
 	print ("------------------------------------------------------------------------\n");
 } else {
 	print ("------------------------------------------------------------------------\n");
 	print ("All names in $fileMe have a match in $fileCo\n");
-	print ("See https://github.com/luisdelaye/Mexstrain/ for more details.\n");
+	print ("See https://github.com/luisdelaye/CurSa/ for more details.\n");
 	print ("------------------------------------------------------------------------\n");
 }
 #-------------------------------------------------------------------------------
