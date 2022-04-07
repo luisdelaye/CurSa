@@ -6,7 +6,7 @@
 # perl create_microreact.pl lat_longs.e1.tsv aligned.fasta metadata.sampled.tsv Mexico
 # out: outfile.tsv, outfile_subset.tsv
 
-# See https://github.com/luisdelaye/Mexstrain/ for more details.
+# See https://github.com/luisdelaye/CurSa/ for more details.
 
 # Author
 # Luis Jose Delaye Arredondo
@@ -331,4 +331,4 @@ while (my $linea = <MIA>){
 close (SOL);
 close (ROB);
 close (MIA);
-#die ("bien!\n");
+
