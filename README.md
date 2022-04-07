@@ -8,7 +8,7 @@ Last update: April 7, 2022.
 The scripts in this repository facilitate the manipulation of data (metadata and fasta sequences) downloaded from GISAID to make a Nextstrain analysis. In particular, the scripts allow to subsample sequences from Nextstrain and GISAID to make a Nextstrain analysis focused in a specified country (Figure 1). For instance, we used these scripts to create [Mexstrain](http://www.ira.cinvestav.mx/ncov.evol.mex.aspx). We also provide scripts to facilitate visualization of sequences in Microreact. The scripts provided here also facilitate the curation of names from locations, divisions and countries from metadata downloaded from GISAID. This curation is an important step to properly display of sequences in Nextstrain and Microreact.
 
 <p align="center">
-  <img width="720" height="405" src="https://github.com/luisdelaye/Mexstrain/blob/main/Figure-1-CurSa.jpeg">
+  <img width="720" height="405" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-1-CurSa.jpeg">
 </p>
 
 Figure 1. Mexstrain allows to combine information from Nextstrain and GISAID to make a phylodynamic analysis focused on a single country.
@@ -18,7 +18,7 @@ Figure 1. Mexstrain allows to combine information from Nextstrain and GISAID to 
 Next, we show a roadmap of how to use the scripts to download data from Nextstrain Global Analysis and GISAID, curate the names of metadata files downloaded from GISAID, sample sequences from Nextstrain and GISAID and finally run a local Nextstrain analysis (Figure 2). All the above, to study the evolution of SARS-CoV-2 sequences in a specified country.
 
 <p align="center">
-  <img width="720" height="1382" src="https://github.com/luisdelaye/Mexstrain/blob/main/Figure-2-CurSa.png">
+  <img width="720" height="1382" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-2-CurSa.png">
 </p>
 Figure 2. Roadmap to make a Nextstrain analysis on a specified country.
 
@@ -30,7 +30,7 @@ First collect the data. Go to the latest global analysis provided by [Nextstrain
 Next, go to [GISAID](https://www.gisaid.org) and download all FASTA sequences (sequences.fasta) and asociated metadata (metadata.tsv). You will find these files in 'Downloads -> Downoads packages'. Also download Spike protein sequences in FASTA format (spikeprot####.fasta). You can find these sequences in 'Downloads -> Alignment and proteins'. In Figure 3 you can see where to find these files in GISAID. Don't forget to decompress these files.
 
 <p align="center">
-  <img width="735.75" height="607.5" src="https://github.com/luisdelaye/Mexstrain/blob/main/Figure-3-CurSa.png">
+  <img width="735.75" height="607.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-3-CurSa.png">
 </p>
 <p style='text-align: right;'> Figure 3. Location of the files sequence.fasta, metadata.tsv and spikeprot####.fasta in GISAID. </p>
 
@@ -38,7 +38,7 @@ Next, go to [GISAID](https://www.gisaid.org) and download all FASTA sequences (s
 Also in [GISAID](https://www.gisaid.org), download all the 'Patient status metadata' associated to the genome sequences from the country (or any other geographical region) on which you would like to focus your Nextstrain analysis. In this case, we will download the metadata from all complete and high coverage sequences from Mexico (gisaid_hcov-19_2022\_##\_##.tsv). You can find this information in 'Search -> Location -> North America -> Mexico' and by clicking in the boxes 'complete' and 'high coverage' and when asked, download the 'Patient status metadata' (Figure 4). 
 
 <p align="center">
-  <img width="736.5" height="596.25" src="https://github.com/luisdelaye/Mexstrain/blob/main/Figure-4-CurSa.png">
+  <img width="736.5" height="596.25" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-4-CurSa.png">
 </p>
 <p style='text-align: right;'> Figure 4. Download all the metadata asociated to the country on which you would like to focus your Nextstrain analysis. </p>
 
@@ -517,7 +517,7 @@ Now you can go to [Microreact](https://microreact.org/showcase) and upload the m
 Note: single quotes "'" in the name of the sequences are transformed to underscores _ in the names of the sequences in the tree. For instance, the sequence name in metadata: Lu'an/5073Y is transformed to Lu_an/5073Y in tree_raw.nwk. If you have sequence names with single quotes, simply open the outfile.tsv with a text editor and remplace the single quote by an underscore. In the example above, just open the outfile.tsv file with a text editor and rename the sequence Lu'an/5073Y to Lu_an/5073Y. Otherwise Microreact will not work.
 
 <p align="center">
-  <img width="707.5" height="371.5" src="https://github.com/luisdelaye/Mexstrain/blob/main/Figure-5-CurSa.png">
+  <img width="707.5" height="371.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-5-CurSa.png">
 </p>
 Figure 5. Microreact visualization of sequences.
 
