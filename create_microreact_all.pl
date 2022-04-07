@@ -6,7 +6,7 @@
 # perl create_microreact_all.pl lat_longs.e1.tsv metadata.sampled.tsv Mexico
 # out: outfile_all.tsv
 
-# See https://github.com/luisdelaye/Mexstrain/ for more details.
+# See https://github.com/luisdelaye/CurSa/ for more details.
 
 # Author
 # Luis Jose Delaye Arredondo
@@ -272,4 +272,4 @@ while (my $linea = <MIA>){
 }
 close (ROB);
 close (MIA);
-#die ("bien!\n");
+
