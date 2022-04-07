@@ -7,7 +7,7 @@
 # out:
 # outfile.tsv
 
-# See https://github.com/luisdelaye/Mexstrain/ for more details.
+# See https://github.com/luisdelaye/CurSa/ for more details.
 
 # Author
 # Luis Jose Delaye Arredondo
