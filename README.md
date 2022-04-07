@@ -156,7 +156,7 @@ North America / Mexico / Zacatecas / 'Zacatecas'
 
 ------------------------------------------------------------------------
 Now run substitute_names.pl.
-See https://github.com/luisdelaye/Mexstrain/ for more details.
+See https://github.com/luisdelaye/CurSa/ for more details.
 ------------------------------------------------------------------------
 ```
 
@@ -282,7 +282,7 @@ North America / Mexico / 'Zacatecas'
 North America / Mexico / Zacatecas / 'Zacatecas'
 ------------------------------------------------------------------------
 All names in outfile.tsv have a match in color_ordering.tsv
-See https://github.com/luisdelaye/Mexstrain/ for more details.
+See https://github.com/luisdelaye/CurSa/ for more details.
 ------------------------------------------------------------------------
 ```
 
