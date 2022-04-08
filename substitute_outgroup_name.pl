@@ -10,7 +10,7 @@
 # out: outfile
 
 
-# See https://github.com/luisdelaye/Mexstrain/ for more details.
+# See https://github.com/luisdelaye/CurSa/ for more details.
 
 # Author
 # Luis Jose Delaye Arredondo
@@ -99,5 +99,4 @@ if ($n1 == 1 && $n2 == 1){
 	print ("hCoV-19/Wuhan/WH01/2019|2019-12-26|2020-01-30\n");
 }
 print ("------------------------------------------------------------------------\n");
-#my $pausa = <STDIN>;
 #-----------------------------------------------------------------------------------------
