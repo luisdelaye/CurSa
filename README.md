@@ -5,13 +5,13 @@ Perl scripts to Curate metadata information and Sample SARS-CoV-2 genome sequenc
 
 Last update: April 7, 2022.
 
-The scripts in this repository facilitate the manipulation of data (metadata and fasta sequences) downloaded from GISAID to make a Nextstrain analysis. In particular, the scripts allow to subsample sequences from Nextstrain and GISAID to make a Nextstrain analysis focused in a specified country (Figure 1). For instance, we used these scripts to create [Mexstrain](https://ira.cinvestav.mx/mexstrain/). We also provide scripts to facilitate visualization of sequences in Microreact. The scripts provided here also facilitate the curation of names from locations, divisions and countries from metadata downloaded from GISAID. This curation is an important step to properly display of sequences in Nextstrain and Microreact.
+The scripts in this repository facilitate the manipulation of data (metadata and fasta sequences) downloaded from GISAID to make phylogenetic analysis of SARS-CoV-2. In particular, the scripts provided here allow to subsample sequences from GISAID to make a phylogeneitc analysis in Nextstrain (Figure 1). For instance, we used these scripts to create [Mexstrain](https://ira.cinvestav.mx/mexstrain/). We also provide scripts to facilitate visualization of sequences in Microreact. The scripts provided here also facilitate the curation of names from locations, divisions and countries from metadata downloaded from GISAID. This curation is an important step to properly display of sequences in Nextstrain and Microreact.
 
 <p align="center">
   <img width="720" height="405" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-1-CurSa.jpeg">
 </p>
 
-Figure 1. CurSa allows to combine information from Nextstrain and GISAID to make a phylodynamic analysis focused on a single country.
+Figure 1. CurSa allows to combine information from Nextstrain and GISAID to make a phylogenetic analysis focused on a single country.
 
 
 
