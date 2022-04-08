@@ -10,7 +10,7 @@
 # 'seed' is an integer used to generate random numbers. Example: 2718 and
 # 'n' is the maximum number of genomes to sample per Pango lineage per month.
 
-# See https://github.com/luisdelaye/Mexstrain/ for more details.
+# See https://github.com/luisdelaye/CurSa/ for more details.
 
 # Author
 # Luis Jose Delaye Arredondo
@@ -188,5 +188,4 @@ print ("\n");
 print ("------------------------------------------------------------------------\n");
 print ("Number of genomes sampled: $N\n");
 print ("------------------------------------------------------------------------\n");
-#die ("bien!\n");
 #-------------------------------------------------------------------------------
