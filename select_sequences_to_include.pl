@@ -5,7 +5,7 @@
 # use
 # perl select_sequences_to_include.pl sequences.sampled.fasta Mexico > add_to_the_include_file.txt
 
-# See https://github.com/luisdelaye/Mexstrain/ for more details.
+# See https://github.com/luisdelaye/CurSa/ for more details.
 
 # Author
 # Luis Jose Delaye Arredondo
