@@ -3,7 +3,7 @@
 # This script concatenate tsv files downloaded from GISAID.
 
 # use
-# perl concatenatetsvfiles.pl gisaid_hcov-19_2021_
+# perl concatenatetsvfiles.pl gisaid_hcov-19_
 # out:
 # outfile.tsv
 
