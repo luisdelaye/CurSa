@@ -43,7 +43,7 @@ Also in [GISAID](https://www.gisaid.org), download all the 'Patient status metad
 <p style='text-align: right;'> Figure 4. Download all the metadata asociated to the country on which you would like to focus your Nextstrain analysis. </p>
 
 
-Because you can download a maximum of 10,000 records each time, you may need to download several files, one for each state/division. In the case of Mexico, we need to download one file for each one of the states (Aguascalientes, Baja California, Baja California Sur, etc.) If you like, you can add the name of the state to each of the files (avoid spaces or accents in the name of the files), for example:
+Because you can download a maximum of 5,000 records each time, you may need to download several files, one for each state/division. In the case of Mexico, we need to download one file for each one of the states (Aguascalientes, Baja California, Baja California Sur, etc.) If you like, you can add the name of the state to each of the files (avoid spaces or accents in the name of the files), for example:
 
 ```
 $ mv gisaid_hcov-19_2022_01_11_01.tsv gisaid_hcov-19_2022_01_11_01_Aguascalientes.tsv
