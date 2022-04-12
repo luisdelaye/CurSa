@@ -49,14 +49,14 @@ Because you can download a maximum of 5,000 records each time, you may need to d
 $ mv gisaid_hcov-19_2022_01_11_01.tsv gisaid_hcov-19_2022_01_11_01_Aguascalientes.tsv
 ```
 
-Just keep the first part of the filename 'gisaid_hcov-19_2022_' and the extension 'tsv'. Next, you will need to run the script:
+Just keep the first part of the filename 'gisaid_hcov-19_' and the extension 'tsv'. Next, you will need to run the script:
 
 ```
-$ perl concatenate_tsv_files.pl gisaid_hcov-19_2022_
-$ mv outfile.tsv gisaid_hcov-19_2022_##_##.tsv
+$ perl concatenate_tsv_files.pl gisaid_hcov-19_
+$ mv outfile.tsv gisaid_hcov-19_####_##_##.tsv
 ```
 
-Please replace the \_##\_##.tsv with an actual date and move this file to your working directory. Note: you may want to run the above script in a separate directory to avoid having an excess of files in your main working directory (just, don't forget to move to that separate directory all the gisaid_hcov-19_2022_\*.tsv files before running the script). 
+Please replace the \_####\_##\_##.tsv with an actual date and move this file to your working directory. Note: you may want to run the above script in a separate directory to avoid having an excess of files in your main working directory (just, don't forget to move to that separate directory all the gisaid_hcov-19_\*.tsv files before running the script). 
 
 In summary, you will have to download from Nextstrain and GISAID the following files:
 
