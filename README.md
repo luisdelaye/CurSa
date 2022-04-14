@@ -20,7 +20,7 @@ Next, we show a roadmap of how to use the scripts to download data from Nextstra
 <p align="center">
   <img width="720" height="1382" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-2-CurSa.png">
 </p>
-Figure 2. Roadmap to make a Nextstrain analysis on a specified country.
+Figure 2. Roadmap to make curate and sample sequences with CurSa for a Nextstrain analysis on a specified country.
 
 
 ### Collect data
