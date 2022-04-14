@@ -213,29 +213,38 @@ Note that there is a tab between the word 'location' and 'Huixtla'. Because you 
 location	Huixtla	15.13	-92.46
 ```
 
-Note that the fields are separated by tabs. You can find the coordinates from 'Huixtla' through its [Wikipedia](https://es.wikipedia.org/wiki/Huixtla) page of the city and then clicking on its geographic coordinates: [15°08′00″N 92°28′00″O](https://geohack.toolforge.org/geohack.php?language=es&pagename=Huixtla&params=15.133333333333_N_-92.466666666667_E_type:city). This will take you to a GeoHack page where you can find the coordinates in decimal. You will need to do the same for all names you add to color_ordering.tsv. 
+Note that the fields are separated by tabs. You can find the coordinates from 'Huixtla' through its [Wikipedia](https://es.wikipedia.org/wiki/Huixtla) page of the city and then clicking on its geographic coordinates: 15°08′00″N 92°28′00″O. This will take you to a [GeoHack page](https://geohack.toolforge.org/geohack.php?language=es&pagename=Huixtla&params=15.133333333333_N_-92.466666666667_E_type:city) where you can find the coordinates in decimal. You will need to do the same for all names you add to color_ordering.tsv. 
 
-Now we will fix another name. In some occasions the geographic locality is in metadata.tsv and in color_ordering.tsv (and in lat_longs.tsv), but it is written in a different language or the name in metadata.tsv has some typos. Lets take a look at: 'Aguascalientes / Pabello de A'. If you google 'Aguascalientes Pabello de A' you will find that 'Pabello de A' refers to a small city named 'Pabellón de Arteaga' in the State of 'Aguascalientes'. Therefore, you have to substitute 'Pabello de A' by 'Pabellon de Arteaga' in metadata.tsv. To do this, open the file substitute_proposal.tsv with a text editor (like [ATOM](https://atom.io)) and find the row containing 'Pabello de A'. Then substitute 'Pabello de A' by 'Pabellon de Arteaga' in the third column (do not remove the single quotes nor the spaces between the slashes /). Example:
+#### Case 2: the name in metadata.tsv is not spelled correctly
+
+In some occasions the geographic locality is in metadata.tsv and in color_ordering.tsv (and in lat_longs.tsv), but it is written in a different language between files or the name in one of the files has some typos. Lets take a look at: 'Aguascalientes / Pabello de A'. If you google 'Aguascalientes Pabello de A' you will find that 'Pabello de A' refers to a small city named 'Pabellón de Arteaga' in the State of 'Aguascalientes'. Therefore, you have to substitute 'Pabello de A' by 'Pabellón de Arteaga' in metadata.tsv. To do this, open the file substitute_proposal.tsv with a text editor (like [ATOM](https://atom.io)) and find the row containing 'Pabello de A'. Then substitute 'Pabello de A' by 'Pabellón de Arteaga' in the third column (do not remove the single quotes nor the spaces between the slashes /). Example:
 
 ```
-'Pabello de A'  'North America / Mexico / Aguascalientes / Pabello de A'  'North America / Mexico / Aguascalientes / Pabellon de Arteaga'
+'Pabello de A'  'North America / Mexico / Aguascalientes / Pabello de A'  'North America / Mexico / Aguascalientes / Pabellón de Arteaga'
 ```
 
-The script substitute_names.pl will read this file and will create a new file named outfile.tsv in which the data in the second column will be substituted by the data in the third column. The file outfile.tsv will be identical to metadata.tsv in everithing else. In addition to the above, check if 'Pabellon de Arteaga' is in color_ordering.tsv. If not, you will have to add this name to color_ordering.tsv and lat_longs.tsv as described above. You will do the same for all the names you would like to modify in the metadata. One final thing, you do not need to erase those rows that have the same data in the second and third column, the script will ignore them. 
+Later on, the script substitute_names.pl will read this file and will create a new file named outfile.tsv in which the data in the third column will be used to fill the field were the sample was collected. The file outfile.tsv will be identical to the original metadata.tsv file in everithing else. In addition to the above, check if 'Pabellón de Arteaga' is in color_ordering.tsv. If not, you will have to add this name to color_ordering.tsv and lat_longs.tsv as described above. You will do the same for all the names you would like to modify in the metadata. 
 
-Now we will review the second part of the output of compare_names.pl. Take a look to the case of 'Altamira'. In Mexico there are two cities with the name 'Altamira', one is in the state of 'Nuevo Leon' and the other is in the state of 'Tamaulipas'. Because of this, we will have to change the name of the cities to differentiate one from the other. One possibility is to name the cities as 'Altamira Nuevo Leon' and 'Atlamira Tamaulipas'. Use the file substitute_proposal.tsv as explained before to change these names. In addition, the names of 'Altamira Nuevo Leon' and 'Altamira Tamaulipas' didn't exist in color_ordering.tsv, so we have to add these cities to this file and to lat_longs.tsv.
+#### Case 3: a name is repeated in different geographical contexts
 
-Once you have finished adding the lacking names to color_ordering.tsv (and to lat_longs.tsv) and identifying all names that need to be substituted in substitute_proposal.tsv (and if necessary adding these new names to color_ordering.tsv and lat_longs.tsv), the run the script:
+Now we will review the second part of the output of compare_names.pl. Take a look to the case of 'Altamira'. In Mexico there are two cities with the name 'Altamira', one is in the state of 'Nuevo Leon' and the other is in the state of 'Tamaulipas'. Because of this, we will have to change the name of the cities to differentiate one from the other. One possibility is to name the cities as 'Altamira Nuevo Leon' and 'Atlamira Tamaulipas'. Use the third column in the file substitute_proposal.tsv as explained before to change these names. In addition, the names of 'Altamira Nuevo Leon' and 'Altamira Tamaulipas' do not exist in color_ordering.tsv, so we have to add these names to this file and to lat_longs.tsv.
+
+One final thing, you do not need to erase those rows that have the same data in the second and third column, the script will ignore them. 
+
+#### Create a new metadata.tsv file
+
+Once you have finished correcting all the names as described above, run the following script:
 
 ```
 $ perl substitute_names.pl metadata.tsv substitute_proposal.tsv
 ```
 
-As mentioned above, this script will output the file: outfile.tsv. This file is an exact copy of metadata.tsv except for those names that were substituted.
+As mentioned above, this script will output the file: outfile.tsv. This file is an exact copy of metadata.tsv except for those names that were substituted according to the third column in substitute_proposal.tsv.
 
-Next, run the script curate_names.pl again, but now on outfile.tsv to see if there are no more mismatches (beware that this script will generate a new substitute_proposal.tsv file if there are mismatches):
+Next, run the script curate_names.pl again, but now on outfile.tsv to see if there are no more mismatches (beware that this script will generate a new substitute_proposal.tsv file if there are mismatches so we recommend to make a security copy of substitute_proposal.tsv before proceeding so you do not lose the work already done):
 
 ```
+$ cp substitute_proposal.tsv substitute_proposal_copy.tsv
 $ perl compare_names.pl color_ordering.tsv outfile.tsv Mexico
 ```
 
@@ -303,10 +312,11 @@ $ mv outfile.tsv metadata.e1.tsv
 
 A final tweak to the color_ordering.tsv file is necessary before we go to the next step. Open the color_ordering.tsv file with a text editor (like [ATOM](https://atom.io)) and replace 'Sobral de Monte Agrac O' by 'Sobral de Monte Agraco'. There is a hidden caracter in the last word 'Agrac O' that has to be removed this way. Don't forget to do the same in lat_longs.tsv file. 
 
-Now, copy the color_ordering.tsv file to its directory:
+Now, copy the color_ordering.tsv and lat_longs.tsv files to their directory:
 
 ```
-cp color_ordering.tsv  /Users/jose/Software/ncov/defaults/
+$ cp color_ordering.tsv  /Users/jose/Software/ncov/defaults/
+$ cp lat_longs.tsv  /Users/jose/Software/ncov/defaults/
 ```
 
 ### Format the metadata file for Nextstrain
