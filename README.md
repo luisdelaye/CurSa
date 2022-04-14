@@ -198,7 +198,7 @@ The first column shows the metadata.tsv name that is lacking in color_ordering.t
 
 Now that you have an overview of which names do not match, we are going to proceed to fix them. For this, we will use the script substitute_names.pl, the file substitute_proposal.tsv and some manual curation. We will review case per case.
 
-#### Case 1: names in metadata.tsv lacking in color_ordering.tsv and lat_longs.tsv
+#### Case 1: a name in metadata.tsv is lacking in color_ordering.tsv and lat_longs.tsv
 
 We will begin by adding to color_ordering.tsv (and lat_longs.tsv) those extra names that are found in metadata.tsv. Start by opening the color_ordering.tsv file with a text edditor (like [ATOM](https://atom.io)). Then, take a look at the first part of the output from compare_names.pl. We will start by analysing 'Huixtla'. By looking at color_ordering.tsv you will find that the location of 'Huixtla' is simply lacking. In this case, simply add the name 'Huixtla' to color_ordering.tsv. You will have to add this name in its proper location. For instance, 'Huixtla' is a 'location' whithin de 'division' of 'Chiapas'. Therefore you will have to add the following text to color_ordering.tsv:
 
