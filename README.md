@@ -541,6 +541,7 @@ Note: single quotes "'" in the name of the sequences are transformed to undersco
 Figure 6. Microreact visualization of sequences.
 
 
+
 If you would like to visualize in [Microreact](https://microreact.org/showcase) only those sequences from the selected country (Mexico) altogether with a phylogenetic tree, follow the next instructions. You will need to run the script:
 
 ```
