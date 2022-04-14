@@ -74,10 +74,10 @@ The above files must be in the same directory as the Perl scripts you downloaded
 
 ### Curate the files containing the names of geographic localities 
 
-Now comes the toughest part: to assure that the names of the geographic localities are spelled the same in color_ordering.tsv, lat_longs.tsv and metadata.tsv files (Figure New). First, a bit of background. We will asume that you have a [local Nextstrain installation](https://docs.nextstrain.org/en/latest/install.html). Now, Nextstrain store the names of geographic localities in two files: color_ordering.tsv and lat_longs.tsv. These files live in: ncov/defaults/ wihtin your Nextstrain installation directory. The first file (color_ordering.tsv) is used by Nextstrain to know if a given locality is a 'region', 'country', 'division' or a 'location'; the second file (lat_longs.tsv) keep record of the geographic coordinates of all the places found in color_ordering.tsv. These files were prepared by the people of Nextstrain and (almost always!) share the same geographic localities. 
+Now comes the toughest part: to assure that the names of the geographic localities are spelled the same in color_ordering.tsv, lat_longs.tsv and metadata.tsv files (Figure 5). First, a bit of background. We will asume that you have a [local Nextstrain installation](https://docs.nextstrain.org/en/latest/install.html). Now, Nextstrain store the names of geographic localities in two files: color_ordering.tsv and lat_longs.tsv. These files live in: ncov/defaults/ wihtin your Nextstrain installation directory. The first file (color_ordering.tsv) is used by Nextstrain to know if a given locality is a 'region', 'country', 'division' or a 'location'; the second file (lat_longs.tsv) keep record of the geographic coordinates of all the places found in color_ordering.tsv. These files were prepared by the people of Nextstrain and (almost always!) share the same geographic localities. 
 
 <p align="center">
-  <img width="720" height="405" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-1-CurSa.jpeg">
+  <img width="720" height="405" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-5-CurSa.jpeg">
 </p>
 <p style='text-align: right;'> Figure New. The names of the geographic localities (highlighted in yellow) have to coincide between color_ordering.tsv, lat_longs.tsv and metadata.tsv files. </p>
 
@@ -233,7 +233,7 @@ One final thing, you do not need to erase those rows that have the same data in 
 
 #### Create a new metadata.tsv file
 
-Once you have finished correcting all the names as described above, run the following script:
+Once you have finished correcting all the names, run the following script:
 
 ```
 $ perl substitute_names.pl metadata.tsv substitute_proposal.tsv
@@ -248,7 +248,7 @@ $ cp substitute_proposal.tsv substitute_proposal_copy.tsv
 $ perl compare_names.pl color_ordering.tsv outfile.tsv Mexico
 ```
 
-If there are no more mismatches you should get the following ouptup:
+If there still mismatches, go for another round of curation, just remember that you will work now in the file substitute_proposal_copy.tsv. If there are no more mismatches you should get the following ouptup:
 
 ```
 ------------------------------------------------------------------------
@@ -531,14 +531,14 @@ $ mv outfile_subset.tsv metadata.sampled.mrMexico.tsv
 
 The above script will create three files: outfile.tsv, outfile_subset.tsv. The first file contains the table required by Microreact with all the sequences found in metadata.sampled.tsv. The second file contains the table required by Microreact only with the sequences from the country of selection (in this case Mexico). 
 
-Now you can go to [Microreact](https://microreact.org/showcase) and upload the metadata.sampled.mr.tsv and the tree_raw.nwk to visualize your data (Figure 5). You can find the tree_raw.nwk in /ncov/results/global-mex/. The tree_raw.nwk file contains a phylogeny of all the sequences in aligned.fasta.
+Now you can go to [Microreact](https://microreact.org/showcase) and upload the metadata.sampled.mr.tsv and the tree_raw.nwk to visualize your data (Figure 6). You can find the tree_raw.nwk in /ncov/results/global-mex/. The tree_raw.nwk file contains a phylogeny of all the sequences in aligned.fasta.
 
 Note: single quotes "'" in the name of the sequences are transformed to underscores _ in the names of the sequences in the tree. For instance, the sequence name in metadata: Lu'an/5073Y is transformed to Lu_an/5073Y in tree_raw.nwk. If you have sequence names with single quotes, simply open the outfile.tsv with a text editor and remplace the single quote by an underscore. In the example above, just open the outfile.tsv file with a text editor and rename the sequence Lu'an/5073Y to Lu_an/5073Y. Otherwise Microreact will not work.
 
 <p align="center">
   <img width="707.5" height="371.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-5-CurSa.png">
 </p>
-Figure 5. Microreact visualization of sequences.
+Figure 6. Microreact visualization of sequences.
 
 
 If you would like to visualize in [Microreact](https://microreact.org/showcase) only those sequences from the selected country (Mexico) altogether with a phylogenetic tree, follow the next instructions. You will need to run the script:
