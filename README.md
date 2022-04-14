@@ -79,7 +79,7 @@ Now comes the toughest part: to assure that the names of the geographic localiti
 <p align="center">
   <img width="720" height="405" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-5-CurSa.jpeg">
 </p>
-<p style='text-align: right;'> Figure New. The names of the geographic localities (highlighted in yellow) have to coincide between color_ordering.tsv, lat_longs.tsv and metadata.tsv files. </p>
+<p style='text-align: right;'> Figure 5. The names of the geographic localities (highlighted in yellow) have to coincide between color_ordering.tsv, lat_longs.tsv and metadata.tsv files. </p>
 
 By the way, [Sombrerete](https://es.wikipedia.org/wiki/Sombrerete) is a Mexican city declared as a UNESCO World Heritage Site were the film [Caveman](https://en.wikipedia.org/wiki/Caveman_(film)) was filmed nearby (starred by Ringo Starr). You can see the full movie [here](https://www.youtube.com/watch?v=YxDjnTrRSiA).
 
@@ -536,7 +536,7 @@ Now you can go to [Microreact](https://microreact.org/showcase) and upload the m
 Note: single quotes "'" in the name of the sequences are transformed to underscores _ in the names of the sequences in the tree. For instance, the sequence name in metadata: Lu'an/5073Y is transformed to Lu_an/5073Y in tree_raw.nwk. If you have sequence names with single quotes, simply open the outfile.tsv with a text editor and remplace the single quote by an underscore. In the example above, just open the outfile.tsv file with a text editor and rename the sequence Lu'an/5073Y to Lu_an/5073Y. Otherwise Microreact will not work.
 
 <p align="center">
-  <img width="707.5" height="371.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-5-CurSa.png">
+  <img width="707.5" height="371.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-6-CurSa.png">
 </p>
 Figure 6. Microreact visualization of sequences.
 
