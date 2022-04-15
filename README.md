@@ -5,7 +5,7 @@ Perl scripts to Curate metadata information and Sample SARS-CoV-2 genome sequenc
 
 Last update: April 14, 2022.
 
-The scripts in this repository facilitate the manipulation of data (metadata and fasta sequences) downloaded from GISAID to make phylogenetic analysis of SARS-CoV-2. In particular, the scripts provided here allow to subsample sequences from GISAID to make a phylogeneitc analysis in Nextstrain (Figure 1). We also provide scripts to facilitate visualization of sequences in Microreact. The scripts provided here also facilitate the curation of names from locations, divisions and countries from metadata downloaded from GISAID. This curation is an important step to properly display of sequences in Nextstrain and Microreact. We used these scripts to create [Mexstrain](https://ira.cinvestav.mx/mexstrain/).
+The scripts in this repository facilitate the manipulation of data (metadata and fasta sequences) downloaded from GISAID to make phylogenetic analysis of SARS-CoV-2. In particular, the scripts provided here allow to subsample sequences from GISAID to make a phylogeneitc analysis in Nextstrain (Figure 1). We also provide scripts to facilitate visualization of sequences in Microreact. The scripts provided here also facilitate the curation of names from locations, divisions and countries from metadata downloaded from GISAID. This curation is an important step to properly display of sequences in Nextstrain and Microreact. To run CurSa scripts you only need to have Perl and a Linux environment. We used these scripts to create [Mexstrain](https://ira.cinvestav.mx/mexstrain/).
 
 <p align="center">
   <img width="720" height="405" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-1-CurSa.jpeg">
@@ -309,6 +309,8 @@ Note that you got several warnings. But they do not represent errors in outfile.
 ```
 $ mv outfile.tsv metadata.e1.tsv
 ```
+
+#### Checking for the correspondence between color_ordering.tsv and lat_longs.tsv
 
 Next, we are going to check whether all the names in color_ordering.tsv have a coordinate in lat_longs.tsv. For this, run the next script:
 
