@@ -310,6 +310,42 @@ Note that you got several warnings. But they do not represent errors in outfile.
 $ mv outfile.tsv metadata.e1.tsv
 ```
 
+Next, we are going to check whether all the names in color_ordering.tsv have a coordinate in lat_longs.tsv. For this, run the next script:
+
+```
+$ perl check_coordinates.pl color_ordering.tsv lat_longs.e1.tsv Mexico
+```
+
+And you will get an output similar to the next one:
+
+```
+The names marked with an (*) lack coordinates in lat_longs.e1.tsv:
+
+### Mexico
+# Baja California
+location	Rosarito
+location	Tijuana
+location	Ensenada
+location	Mexicali
+location	Tecate
+
+# Baja California Sur
+location	Los Cabos
+
+# Nuevo Leon
+location	San Nicolas De Los Garza
+location	Monterrey
+location	Abasolo
+location	Altamira Nuevo Leon
+location	Apodaca
+location	Cadereyta Jimenez
+location	Cerralvo
+location	Cienega de Flores (*)
+
+```
+
+Note that the location 'Cienega de Flores' is marked with an (\*), meaning that there are no coordinates in lat_longs.tsv file for this place. To fix this, simply open lat_longs.tsv and add the geographic coordinates as explined before.
+
 A final tweak to the color_ordering.tsv file is necessary before we go to the next step. Open the color_ordering.tsv file with a text editor (like [ATOM](https://atom.io)) and replace 'Sobral de Monte Agrac O' by 'Sobral de Monte Agraco'. There is a hidden caracter in the last word 'Agrac O' that has to be removed this way. Don't forget to do the same in lat_longs.tsv file. 
 
 Now, copy the color_ordering.tsv and lat_longs.tsv files to their directory:
