@@ -249,17 +249,21 @@ As mentioned above, this script will output the file: outfile.tsv. This file is 
 $ mv outfile.tsv outfile_round1.tsv
 ```
 
-Next, run the script curate_names.pl again, but now on outfile_round1.tsv to see if there are no more mismatches:
+Next, run the script compare_names.pl again, but now on outfile_round1.tsv to see if there are no more mismatches:
 
 ```
-$ mv substitute_proposal.tsv substitute_proposal_round1.tsv
 $ perl compare_names.pl color_ordering.tsv outfile_round1.tsv Mexico
 ```
 
-If there were mismatches, go for another round of curation, just remember to rename the new file substitute_proposal.tsv to substitute_proposal_round2.tsv. Make the corresponding corrections to substitute_proposal_round2.tsv and then apply the script substitute_names.pl:
+If there were mismatches, go for another round of curation, just remember to rename the new file substitute_proposal.tsv to substitute_proposal_round2.tsv: 
 
 ```
 $ mv substitute_proposal.tsv substitute_proposal_round2.tsv
+```
+
+Make the corresponding editions to substitute_proposal_round2.tsv and then apply the script substitute_names.pl:
+
+```
 $ perl substitute_names.pl outfile_round1.tsv substitute_proposal_round2.tsv
 ```
 
