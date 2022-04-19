@@ -244,11 +244,11 @@ As mentioned above, this script will output the file: outfile.tsv. This file is 
 Next, run the script curate_names.pl again, but now on outfile.tsv to see if there are no more mismatches (beware that this script will generate a new substitute_proposal.tsv file if there are mismatches so we recommend to make a security copy of substitute_proposal.tsv before proceeding so you do not lose the work already done):
 
 ```
-$ cp substitute_proposal.tsv substitute_proposal_copy.tsv
+$ cp substitute_proposal.tsv substitute_proposal_round1.tsv
 $ perl compare_names.pl color_ordering.tsv outfile.tsv Mexico
 ```
 
-If there still mismatches, go for another round of curation, just remember that you will work now in the file substitute_proposal_copy.tsv. If there are no more mismatches you should get the following ouptup:
+If there still mismatches, go for another round of curation, just remember that you will work now in the file substitute_proposal_round1.tsv. If there are no more mismatches you should get the following ouptup:
 
 ```
 ------------------------------------------------------------------------
