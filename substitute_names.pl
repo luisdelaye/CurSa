@@ -67,14 +67,9 @@ my $n = 0;
 if (-e 'outfile.tsv'){
 	print ("\n------------------------------------------------------------------------\n");
 	print ("A file named outfile.tsv already exists.\n");
-	print ("If you continue with the analysis, its content will be replaced.\n");
-	print ("Do you want to continue? (y/n)\n");
-	my $answer = <STDIN>;
-	if ($answer =~ /n/i){
-		die;
-	} else {
-		system ("rm outfile.tsv\n")
-	}
+	print ("Please rename this file according to the round of curation.\n");
+	print ("Example: outfile_round1.tsv\n");
+	die;
 }
 
 #-------------------------------------------------------------------------------
