@@ -252,11 +252,20 @@ $ mv outfile.tsv outfile_round1.tsv
 Next, run the script curate_names.pl again, but now on outfile_round1.tsv to see if there are no more mismatches:
 
 ```
-$ cp substitute_proposal.tsv substitute_proposal_round1.tsv
+$ mv substitute_proposal.tsv substitute_proposal_round1.tsv
 $ perl compare_names.pl color_ordering.tsv outfile_round1.tsv Mexico
 ```
 
-If there still mismatches, go for another round of curation, just remember to rename the files outfile.tsv and substitute_proposal.tsv depending on the round number. If there are no more mismatches you should get the following ouptup:
+If there were mismatches, go for another round of curation, just remember to rename the new file substitute_proposal.tsv to substitute_proposal_round2.tsv. Make the corresponding corrections to substitute_proposal_round2.tsv and then apply the script substitute_names.pl:
+
+```
+$ mv substitute_proposal.tsv substitute_proposal_round2.tsv
+$ perl substitute_names.pl outfile_round1.tsv substitute_proposal_round2.tsv
+```
+
+An so on...
+
+Alternatively, if there are no more mismatches you should get the following output:
 
 ```
 ------------------------------------------------------------------------
@@ -312,7 +321,7 @@ See https://github.com/luisdelaye/CurSa/ for more details.
 ------------------------------------------------------------------------
 ```
 
-Note that you got several warnings. But they do not represent errors in outfile_round1.tsv since they correspond to those cities that are named as the states in which they are located. Now change the name of outfile.tsv to:
+Note that you got several warnings. But they do not represent errors in outfile_round1.tsv since they correspond to those cities that are named as the states in which they are located. Now change the name of the new outfile.tsv to:
 
 ```
 $ mv outfile.tsv metadata.e1.tsv
