@@ -328,7 +328,7 @@ See https://github.com/luisdelaye/CurSa/ for more details.
 Note that you got several warnings. But they do not represent errors in outfile_round1.tsv since they correspond to those cities that are named as the states in which they are located. Now change the name of the new outfile.tsv to:
 
 ```
-$ mv outfile.tsv metadata.e1.tsv
+$ mv outfile_round1.tsv metadata.e1.tsv
 ```
 
 #### Checking for the correspondence between color_ordering.tsv and lat_longs.tsv
