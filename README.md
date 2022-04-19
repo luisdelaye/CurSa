@@ -194,9 +194,13 @@ In addition to report the inconsistencies to the screen, compare_names.pl create
 
 ```
 
-The first column shows the metadata.tsv name that is lacking in color_ordering.tsv; the second column shows the geographical context of the name; and the third column is identical to the second one. Each column is separated by a tab. By editing the information in the third column, we will use this file to create a new metadata file where all names from geographic localities match those of color_ordering.tsv. 
+The first column shows the metadata.tsv name that is lacking in color_ordering.tsv; the second column shows the geographical context of the name; and the third column is identical to the second one. Each column is separated by a tab. By editing the information in the third column, we will use this file to create a new metadata file where all names from geographic localities match those of color_ordering.tsv. Please, rename this file in case you have to do several rounds of curation:
 
-Now that you have an overview of which names do not match, we are going to proceed to fix them. For this, we will use the script substitute_names.pl, the file substitute_proposal.tsv and some manual curation. We will review case per case.
+```
+$ mv substitute_proposal.tsv substitute_proposal_round1.tsv
+```
+
+Now that you have an overview of which names do not match, we are going to proceed to fix them. For this, we will use the script substitute_names.pl, the file substitute_proposal_round1.tsv and some manual curation. We will review case per case.
 
 #### Case 1: a name in metadata.tsv is lacking in color_ordering.tsv and lat_longs.tsv
 
@@ -217,7 +221,7 @@ Note that the fields are separated by tabs. You can find the coordinates from 'H
 
 #### Case 2: the name in metadata.tsv is not spelled correctly
 
-In some occasions the geographic locality is in metadata.tsv and in color_ordering.tsv (and in lat_longs.tsv), but it is written in a different language between files or the name in one of the files has some typos. Lets take a look at: 'Aguascalientes / Pabello de A'. If you google 'Aguascalientes Pabello de A' you will find that 'Pabello de A' refers to a small city named 'Pabellón de Arteaga' in the State of 'Aguascalientes'. Therefore, you have to substitute 'Pabello de A' by 'Pabellón de Arteaga' in metadata.tsv. To do this, open the file substitute_proposal.tsv with a text editor (like [ATOM](https://atom.io)) and find the row containing 'Pabello de A'. Then substitute 'Pabello de A' by 'Pabellón de Arteaga' in the third column (do not remove the single quotes nor the spaces between the slashes /). Example:
+In some occasions the geographic locality is in metadata.tsv and in color_ordering.tsv (and in lat_longs.tsv), but it is written in a different language between files or the name in one of the files has some typos. Lets take a look at: 'Aguascalientes / Pabello de A'. If you google 'Aguascalientes Pabello de A' you will find that 'Pabello de A' refers to a small city named 'Pabellón de Arteaga' in the State of 'Aguascalientes'. Therefore, you have to substitute 'Pabello de A' by 'Pabellón de Arteaga' in metadata.tsv. To do this, open the file substitute_proposal_round1.tsv with a text editor (like [ATOM](https://atom.io)) and find the row containing 'Pabello de A'. Then substitute 'Pabello de A' by 'Pabellón de Arteaga' in the third column (do not remove the single quotes nor the spaces between the slashes /). Example:
 
 ```
 'Pabello de A'  'North America / Mexico / Aguascalientes / Pabello de A'  'North America / Mexico / Aguascalientes / Pabellón de Arteaga'
@@ -227,33 +231,37 @@ Later on, the script substitute_names.pl will read this file and will create a n
 
 #### Case 3: a name is repeated in different geographical contexts
 
-Now we will review the second part of the output of compare_names.pl. Take a look to the case of 'Altamira'. In Mexico there are two cities with the name 'Altamira', one is in the state of 'Nuevo Leon' and the other is in the state of 'Tamaulipas'. Because of this, we will have to change the name of the cities to differentiate one from the other. One possibility is to name the cities as 'Altamira Nuevo Leon' and 'Atlamira Tamaulipas'. Use the third column in the file substitute_proposal.tsv as explained before to change these names. In addition, the names of 'Altamira Nuevo Leon' and 'Altamira Tamaulipas' do not exist in color_ordering.tsv, so we have to add these names to this file and to lat_longs.tsv.
+Now we will review the second part of the output of compare_names.pl. Take a look to the case of 'Altamira'. In Mexico there are two cities with the name 'Altamira', one is in the state of 'Nuevo Leon' and the other is in the state of 'Tamaulipas'. Because of this, we will have to change the name of the cities to differentiate one from the other. One possibility is to name the cities as 'Altamira Nuevo Leon' and 'Atlamira Tamaulipas'. Use the third column in the file substitute_proposal_round1.tsv as explained before to change these names. In addition, the names of 'Altamira Nuevo Leon' and 'Altamira Tamaulipas' do not exist in color_ordering.tsv, so we have to add these names to this file and to lat_longs.tsv.
 
-One final thing, you do not need to erase those rows that have the same data in the second and third column, the script will ignore them. 
+One final thing, you do not need to erase those rows in the file substitute_proposal_round1.tsv that have the same data in the second and third column, the script will ignore them. 
 
 #### Create a new metadata.tsv file
 
 Once you have finished correcting all the names, run the following script:
 
 ```
-$ perl substitute_names.pl metadata.tsv substitute_proposal.tsv
+$ perl substitute_names.pl metadata.tsv substitute_proposal_round1.tsv
 ```
 
-As mentioned above, this script will output the file: outfile.tsv. This file is an exact copy of metadata.tsv except for those names that were substituted according to the third column in substitute_proposal.tsv.
+As mentioned above, this script will output the file: outfile.tsv. This file is an exact copy of metadata.tsv except for those names that were substituted according to the third column in substitute_proposal_round1.tsv. You have to rename the outfile.tsv, in case you need to do several rounds of curation:
 
-Next, run the script curate_names.pl again, but now on outfile.tsv to see if there are no more mismatches (beware that this script will generate a new substitute_proposal.tsv file if there are mismatches so we recommend to make a security copy of substitute_proposal.tsv before proceeding so you do not lose the work already done):
+```
+$ mv outfile.tsv outfile_round1.tsv
+```
+
+Next, run the script curate_names.pl again, but now on outfile_round1.tsv to see if there are no more mismatches:
 
 ```
 $ cp substitute_proposal.tsv substitute_proposal_round1.tsv
-$ perl compare_names.pl color_ordering.tsv outfile.tsv Mexico
+$ perl compare_names.pl color_ordering.tsv outfile_round1.tsv Mexico
 ```
 
-If there still mismatches, go for another round of curation, just remember that you will work now in the file substitute_proposal_round1.tsv. If there are no more mismatches you should get the following ouptup:
+If there still mismatches, go for another round of curation, just remember to rename the files outfile.tsv and substitute_proposal.tsv depending on the round number. If there are no more mismatches you should get the following ouptup:
 
 ```
 ------------------------------------------------------------------------
 Part 1
-Are there names in outfile.tsv lacking in color_ordering.tsv?
+Are there names in outfile_round1.tsv lacking in color_ordering.tsv?
 
 ------------------------------------------------------------------------
 Part 2
@@ -299,12 +307,12 @@ Warning! the name 'Zacatecas' is in more than one geographic context:
 North America / Mexico / 'Zacatecas'
 North America / Mexico / Zacatecas / 'Zacatecas'
 ------------------------------------------------------------------------
-All names in outfile.tsv have a match in color_ordering.tsv
+All names in outfile_round1.tsv have a match in color_ordering.tsv
 See https://github.com/luisdelaye/CurSa/ for more details.
 ------------------------------------------------------------------------
 ```
 
-Note that you got several warnings. But they do not represent errors in outfile.tsv since they correspond to those cities that are named as the states in which they are located. Now change the name of outfile.tsv to:
+Note that you got several warnings. But they do not represent errors in outfile_round1.tsv since they correspond to those cities that are named as the states in which they are located. Now change the name of outfile.tsv to:
 
 ```
 $ mv outfile.tsv metadata.e1.tsv
