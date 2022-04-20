@@ -255,7 +255,7 @@ Next, run the script compare_names.pl again, but now on outfile_round1.tsv to se
 $ perl compare_names.pl color_ordering.tsv outfile_round1.tsv Mexico
 ```
 
-If there were mismatches, go for another round of curation, just remember to rename the new file substitute_proposal.tsv to substitute_proposal_round2.tsv: 
+i) If there were mismatches, go for another round of curation, just remember to rename the new file substitute_proposal.tsv to substitute_proposal_round2.tsv: 
 
 ```
 $ mv substitute_proposal.tsv substitute_proposal_round2.tsv
@@ -269,7 +269,7 @@ $ perl substitute_names.pl outfile_round1.tsv substitute_proposal_round2.tsv
 
 An so on...
 
-Alternatively, if there are no more mismatches you should get the following output:
+ii) Alternatively, if there are no more mismatches you should get the following output:
 
 ```
 ------------------------------------------------------------------------
