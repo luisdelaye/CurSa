@@ -416,7 +416,7 @@ Nextstrain can handle and display approximately 5000 sequences. But you may have
 Before running the script, we have to delete hidden new line characters:
 
 ```
-$ perl replacemc.pl gisaid_hcov-19_2022_##_##.tsv 
+$ perl replace_mc.pl gisaid_hcov-19_2022_##_##.tsv 
 $ mv gisaid_hcov-19_2022_##_##.tsv.e1 gisaid_hcov-19_2022_##_##.e1.tsv 
 ```
 
