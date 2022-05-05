@@ -91,16 +91,20 @@ print ("\nThe names marked with an (*) lack coordinates in $fileLL:\n\n");
 open (ROB, ">names_lacking_coordinates.txt") or die ("Can't open file names_lacking_coordinates.txt\n");
 for (my $i = 0; $i <= $#places; $i++){
   print ("$places[$i]");
+	print ROB ("$places[$i]");
   if ($i > 0){
     my @a = split (/\t/, $places[$i]);
     #print (" --> @a\n");
     if (!exists $coord{$a[1]}){
       print (" (*)\n");
+			print ROB (" (*)\n");
     } else {
       print ("\n");
+			print ROB ("\n");
     }
   } else {
     print ("\n");
+		print ROB ("\n");
   }
 }
 close (ROB);
