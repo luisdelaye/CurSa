@@ -558,8 +558,8 @@ $ snakemake --cores 16 --profile ./my_profiles/yourprofileforthisrun/ -p
 If you like, yo can add special columns to the metadata file. Just run:
 
 ```
-#$ perl add_columns_to_metadata.pl metadata.selected.tsv
-#$ mv outfile.tsv metadata.selected.tsv
+#$ perl add_columns_to_metadata.pl metadata.sampled.tsv
+#$ mv outfile.tsv metadata.sampled.tsv
 ```
 Of course, you have to do the above step just before copying the metadata file to: /Users/jose/Software/ncov/data/.
 
