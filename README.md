@@ -478,8 +478,38 @@ Now, a final tweaks to the metadata and sequences file:
 
 ```
 $ perl substitute_outgroup_name.pl metadata.sampled.tsv
+
+bingo!
+The sequence:
+hCoV-19/Wuhan/Hu-1/2019|2019-12-31|2020-01-12
+was substituted by: Wuhan/Hu-1/2019
+
+bingo!
+The sequence:
+hCoV-19/Wuhan/WH01/2019|2019-12-26|2020-01-30
+was substituted by: Wuhan/WH01/2019
+
+------------------------------------------------------------------------
+The IDs of both outgroups were changed successfully
+------------------------------------------------------------------------
+
 $ mv outfile metadata.sampled.tsv
 $ perl substitute_outgroup_name.pl sequences.sampled.fasta
+
+bingo!
+The sequence:
+hCoV-19/Wuhan/Hu-1/2019|2019-12-31|2020-01-12
+was substituted by: Wuhan/Hu-1/2019
+
+bingo!
+The sequence:
+hCoV-19/Wuhan/WH01/2019|2019-12-26|2020-01-30
+was substituted by: Wuhan/WH01/2019
+
+------------------------------------------------------------------------
+The IDs of both outgroups were changed successfully
+------------------------------------------------------------------------
+
 $ mv outfile sequences.sampled.fasta
 ```
 
