@@ -522,6 +522,14 @@ $ perl replace_mc.pl sequences.sampled.fasta
 $ mv sequences.sampled.fasta.e1 sequences.sampled.fasta
 ```
 
+And finally:
+
+```
+$ perl veryfinaltweak.pl metadata.sampled.tsv sequences.sampled.fasta
+$ mv outfile.fasta sequences.sampled.fasta
+$ mv outfile.tsv metadata.sampled.tsv
+```
+
 With this, you have the sequence and the metadata files required to run a Nextstrain analysis:
 
 ```
@@ -550,7 +558,7 @@ Now, run Nextstrain!
 
 ```
 $ conda activate nextstrain
-$ snakemake --cores 16 --profile ./my_profiles/yourprofileforthisrun/ -p
+$ nextstrain build . --cores all --configfile my_profiles/yourprofileforthisrun/config.yaml
 ```
 
 ### Optional: add columns to the metadata file
