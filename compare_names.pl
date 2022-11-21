@@ -25,6 +25,7 @@
 # beta.1.0 version
 
 use strict;
+
 #-------------------------------------------------------------------------------
 # Global variables
 
@@ -58,19 +59,22 @@ if (-e 'substitute_proposal.tsv'){
 
 #-------------------------------------------------------------------------------
 # Gather information from the color_ordering.tsv file
+
 open (MIA, "$fileCo") or die ("Can't open $fileCo\n");
 while (my $linea = <MIA>){
 	chomp ($linea);
-  if ($linea !~ /#/ && $linea =~ /\w/){
-    my @a = split (/\t/, $linea);
-    $a[1] =~ tr/A-Z/a-z/;
-    $hashCo{$a[1]} = $a[0] if ($a[0] ne 'recency');
-  }
+	if ($linea !~ /#/ && $linea =~ /\w/){
+		my @a = split (/\t/, $linea);
+		$a[1] =~ tr/A-Z/a-z/;
+		$hashCo{$a[1]} = $a[0] if ($a[0] ne 'recency');
+	}
 }
 close (MIA);
 my @geo = sort keys (%hashCo);
+
 #-------------------------------------------------------------------------------
 # Check whether there are lacking names
+
 print ("\n------------------------------------------------------------------------\n");
 print ("Part 1\n");
 print ("Are there names in $fileMe lacking in $fileCo?\n");
@@ -80,22 +84,22 @@ open (MIA, "$fileMe") or die ("Can't open $fileMe\n");
 while (my $linea = <MIA>){
 	chomp ($linea);
 	$l++;
-  if ($l > 1){
-    my @a = split (/\t/, $linea);
-    my @b = split (/\//, $a[4]);
+	if ($l > 1){
+		my @a = split (/\t/, $linea);
+		my @b = split (/\//, $a[4]);
 		my @c = split (/\//, $a[4]);
-    for (my $i = 0; $i <= $#b; $i++){
-      $b[$i] =~ s/^\s+//;
-      $b[$i] =~ s/\s+$//;
-      $b[$i] =~ tr/A-Z/a-z/;
+		for (my $i = 0; $i <= $#b; $i++){
+			$b[$i] =~ s/^\s+//;
+			$b[$i] =~ s/\s+$//;
+			$b[$i] =~ tr/A-Z/a-z/;
 			$c[$i] =~ s/^\s+//;
-      $c[$i] =~ s/\s+$//;
-    }
+			$c[$i] =~ s/\s+$//;
+		}
 		$allgc{$a[4]} += 1;
-    if ($b[1] =~ /^$country$/i){
+		if ($b[1] =~ /^$country$/i){
 			# Ask if there is a name in metadata.tsv that is not found in color_ordering.tsv
-      for (my $i = 0; $i <= $#b; $i++){
-        if (!exists $hashCo{$b[$i]}){
+			for (my $i = 0; $i <= $#b; $i++){
+				if (!exists $hashCo{$b[$i]}){
 					if (!exists $check{$a[4]}){
 						print ("\n");
 						print ("Warning! name not found in $fileCo: '$c[$i]'\n");
@@ -104,8 +108,8 @@ while (my $linea = <MIA>){
 						$output{$a[4]} = $c[$i];
 						$check{$a[4]} = 1; # With this hash I control whether the name (and its geographic context) is already identified
 					}
-        }
-      }
+				}
+			}
 			# Ask if the same name is in different geographic contexts
 			for (my $i = $#c; $i > 0; $i--){
 				if ($c[$i] =~ /\w/){
@@ -142,8 +146,8 @@ while (my $linea = <MIA>){
 					}
 				}
 			}
-    }
-  }
+		}
+	}
 }
 close (MIA);
 my @out = sort keys (%output);

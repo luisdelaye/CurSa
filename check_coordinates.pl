@@ -22,6 +22,7 @@
 # beta.1.0 version
 
 use strict;
+
 #-------------------------------------------------------------------------------
 # Global variables
 
@@ -56,19 +57,19 @@ my $r = 0;
 
 open (MIA, "$fileCo") or die ("Can't open file $fileCo\n");
 while (my $linea = <MIA>){
-  chomp ($linea);
-  if ($linea =~ /^###/ && $r == 1){
-    $r = 0;
-  }
-  if ($r == 1){
-    my @a = split (/\t/, $linea);
-    $hash{$a[1]} = 1;
-    push (@places, $linea);
-  }
-  if ($linea =~ /^###\s$country/ && $r == 0){
-    push (@places, $linea);
-    $r = 1;
-  }
+	chomp ($linea);
+	if ($linea =~ /^###/ && $r == 1){
+		$r = 0;
+	}
+	if ($r == 1){
+		my @a = split (/\t/, $linea);
+		$hash{$a[1]} = 1;
+		push (@places, $linea);
+	}
+	if ($linea =~ /^###\s$country/ && $r == 0){
+		push (@places, $linea);
+		$r = 1;
+	}
 }
 close (MIA);
 
@@ -77,9 +78,9 @@ close (MIA);
 
 open (MIA, "$fileLL") or die ("Can't open file $fileLL\n");
 while (my $linea = <MIA>){
-  chomp ($linea);
-  my @a = split (/\t/, $linea);
-  $coord{$a[1]} = 1;
+	chomp ($linea);
+	my @a = split (/\t/, $linea);
+	$coord{$a[1]} = 1;
 }
 close (MIA);
 
@@ -90,22 +91,22 @@ print ("\nThe names marked with an (*) lack coordinates in $fileLL:\n\n");
 
 open (ROB, ">names_lacking_coordinates.txt") or die ("Can't open file names_lacking_coordinates.txt\n");
 for (my $i = 0; $i <= $#places; $i++){
-  print ("$places[$i]");
+	print ("$places[$i]");
 	print ROB ("$places[$i]");
-  if ($i > 0){
-    my @a = split (/\t/, $places[$i]);
-    #print (" --> @a\n");
-    if (!exists $coord{$a[1]}){
-      print (" (*)\n");
+	if ($i > 0){
+		my @a = split (/\t/, $places[$i]);
+		#print (" --> @a\n");
+		if (!exists $coord{$a[1]}){
+			print (" (*)\n");
 			print ROB (" (*)\n");
-    } else {
-      print ("\n");
+		} else {
+			print ("\n");
 			print ROB ("\n");
-    }
-  } else {
-    print ("\n");
+		}
+	} else {
+		print ("\n");
 		print ROB ("\n");
-  }
+	}
 }
 close (ROB);
 

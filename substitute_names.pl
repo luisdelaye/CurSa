@@ -48,6 +48,7 @@
 # beta.1.0 version
 
 use strict;
+
 #-------------------------------------------------------------------------------
 # Global variables
 
@@ -114,9 +115,9 @@ open (ROB, ">outfile.tsv") or die ("Can't open outfile.tsv\n");
 while (my $linea = <MIA>){
 	chomp ($linea);
 	$l++;
-  if ($l > 1){
-    my @a = split (/\t/, $linea);
-    my @b = split (/\//, $a[4]);
+	if ($l > 1){
+		my @a = split (/\t/, $linea);
+		my @b = split (/\//, $a[4]);
 		if (exists $hashSub{$a[4]}){
 			for (my $i = 0; $i <= $#a; $i++){
 				if ($i == 4){
@@ -127,10 +128,10 @@ while (my $linea = <MIA>){
 				} else {
 					print ROB ("$a[$i]\t");
 				}
-		  }
+			}
 		} else {
-    	print ROB ("$linea\n");
-  	}
+			print ROB ("$linea\n");
+		}
 	} else {
 		print ROB ("$linea\n");
 	}

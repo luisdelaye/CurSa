@@ -19,8 +19,10 @@
 # beta.1.0 version
 
 use strict;
+
 #-------------------------------------------------------------------------------
 # Declare global variables
+
 my $file = $ARGV[0];
 my $country = $ARGV[1];
 

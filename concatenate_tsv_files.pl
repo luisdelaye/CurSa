@@ -21,6 +21,7 @@
 # beta.1.0 version
 
 use strict;
+
 #-------------------------------------------------------------------------------
 # Global variables
 
@@ -55,42 +56,42 @@ my @files = glob("$filename*.tsv");
 
 open (ROB, ">outfile.tsv") or die ("Can't open outfile.tsv\n");
 foreach my $f (@files){
-  $n++;
-  print ("$f\n");
-  if ($n == 1){
-    my $l = 0;
-    open (MIA, "$f") or die ("Can't open $f\n");
-    while (my $linea = <MIA>){
-      $l++;
-      if ($l == 1){
-        $header = $linea;
-        print ROB ("$linea");
-      } else {
-        my @a = split (/\t/, $linea);
-        if (!exists $hash{$a[1]}){
-          $hash{$a[1]} = 1;
-          print ROB ("$linea");
-          $ids++;
-        }
-      }
-    }
-    close (MIA);
-  } else {
-    my $l = 0;
-    open (MIA, "$f") or die ("Can't open $f\n");
-    while (my $linea = <MIA>){
-      $l++;
-      if ($l > 1){
-        my @a = split (/\t/, $linea);
-        if (!exists $hash{$a[1]}){
-          $hash{$a[1]} = 1;
-          print ROB ("$linea");
-          $ids++;
-        }
-      }
-    }
-    close (MIA);
-  }
+	$n++;
+	print ("$f\n");
+	if ($n == 1){
+		my $l = 0;
+		open (MIA, "$f") or die ("Can't open $f\n");
+		while (my $linea = <MIA>){
+			$l++;
+			if ($l == 1){
+				$header = $linea;
+				print ROB ("$linea");
+			} else {
+				my @a = split (/\t/, $linea);
+				if (!exists $hash{$a[1]}){
+					$hash{$a[1]} = 1;
+					print ROB ("$linea");
+					$ids++;
+				}
+			}
+		}
+		close (MIA);
+	} else {
+		my $l = 0;
+		open (MIA, "$f") or die ("Can't open $f\n");
+		while (my $linea = <MIA>){
+			$l++;
+			if ($l > 1){
+				my @a = split (/\t/, $linea);
+				if (!exists $hash{$a[1]}){
+					$hash{$a[1]} = 1;
+					print ROB ("$linea");
+					$ids++;
+				}
+			}
+		}
+		close (MIA);
+	}
 }
 close (ROB);
 print ("\n");

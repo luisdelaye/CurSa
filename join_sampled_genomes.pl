@@ -21,6 +21,7 @@
 # beta.1.0 version
 
 use strict;
+
 #-------------------------------------------------------------------------------
 # Global variables
 
@@ -77,12 +78,12 @@ if (-e 'outfile.fasta'){
 open (MIA, "$fileg") or die ("Can't open $fileg\n");
 while (my $linea = <MIA>){
 	chomp ($linea);
-  if ($linea =~ /(.+)/){
-    my $id = $1;
-    $id =~ s/\s//g;
-    $ids{$id} = 1;
+	if ($linea =~ /(.+)/){
+		my $id = $1;
+		$id =~ s/\s//g;
+		$ids{$id} = 1;
 		$notfound{$id} = 0;
-  }
+	}
 }
 close (MIA);
 
@@ -92,13 +93,13 @@ close (MIA);
 open (MIA, "$filen") or die ("Can't open $filen\n");
 while (my $linea = <MIA>){
 	chomp ($linea);
-  if ($linea =~ /(.+)/){
-    my $id = $1;
-    $id =~ s/\s//g;
-    $ids{$id} = 1;
+	if ($linea =~ /(.+)/){
+		my $id = $1;
+		$id =~ s/\s//g;
+		$ids{$id} = 1;
 		$notfound{$id} = 0;
 		#print ("($id)\n");
-  }
+	}
 }
 close (MIA);
 
@@ -109,18 +110,18 @@ open (MIA, "$filem") or die ("Can't open $filem\n");
 open (ROB, ">outfile.tsv") or die ("Can't open outfile.tsv\n");
 while (my $linea = <MIA>){
 	chomp ($linea);
-  $l++;
-  if ($l > 1){
-    my @a = split (/\t/, $linea);
-    if (exists $ids{$a[1]}){
-      print ROB ("$linea\n");
-      $headers{$a[0]} = $a[1];
+	$l++;
+	if ($l > 1){
+		my @a = split (/\t/, $linea);
+		if (exists $ids{$a[1]}){
+			print ROB ("$linea\n");
+			$headers{$a[0]} = $a[1];
 			$notfound{$a[1]} = 1;
 			$n_M++;
-    }
-  } else {
-    print ROB ("$linea\n");
-  }
+		}
+	} else {
+		print ROB ("$linea\n");
+	}
 }
 close (ROB);
 close (MIA);
@@ -133,12 +134,12 @@ open (ROB, ">outfile.fasta") or die ("Can't open outfile.fasta\n");
 while (my $linea = <MIA>){
 	#chomp ($linea);
 	if ($linea =~ />/ && $r == 1){
-    $name =~ s/>//;
+		$name =~ s/>//;
 		if (exists $headers{$name}){
-      print ROB (">$name\n$sec\n");
+			print ROB (">$name\n$sec\n");
 			$notfound{$headers{$name}} = 2;
 			$n_S++;
-    }
+		}
 		$r = 0;
 		$name = $sec = ();
 	}
@@ -146,18 +147,18 @@ while (my $linea = <MIA>){
 		$sec = $sec.$linea;
 	}
 	if ($linea =~ />/ && $r == 0){
-    chomp ($linea);
+		chomp ($linea);
 		$name = $linea;
 		$r = 1;
 	}
 }
 if ($r == 1){
-  $name =~ s/>//;
-  if (exists $headers{$name}){
-    print ROB (">$name\n$sec\n");
+	$name =~ s/>//;
+	if (exists $headers{$name}){
+		print ROB (">$name\n$sec\n");
 		$notfound{$headers{$name}} = 2;
 		$n_S++;
-  }
+	}
 	$r = 0;
 	$name = $sec = ();
 }

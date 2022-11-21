@@ -20,6 +20,7 @@
 # beta.1.0 version
 
 use strict;
+
 #-------------------------------------------------------------------------------
 # Global variables
 
@@ -51,15 +52,16 @@ if (-e 'outfile'){
 
 open (MIA, "$file1") or die ("Can't open $file1\n");
 while (my $linea = <MIA>){
-  chomp ($linea);
-  $l++;
-  if ($l > 1){
-    my @a = split (/\t/, $linea);
-    $seqs{$a[0]} = 1;
-    #print ("($a[0])\n");
-  }
+	chomp ($linea);
+	$l++;
+	if ($l > 1){
+		my @a = split (/\t/, $linea);
+		$seqs{$a[0]} = 1;
+		#print ("($a[0])\n");
+	}
 }
 close (MIA);
+
 #-------------------------------------------------------------------------------
 # Exstract sequences
 
@@ -73,10 +75,10 @@ while (my $linea = <MIA>){
 	#chomp ($linea);
 	if ($linea =~ />/ && $r == 1){
 		if (exists $seqs{$name}){
-      print ("($name)\n");
-      print ROB (">$name\n");
-      print ROB ("$sec\n");
-    }
+			print ("($name)\n");
+			print ROB (">$name\n");
+			print ROB ("$sec\n");
+		}
 		$r = 0;
 		$name = $sec = ();
 	}
@@ -85,17 +87,17 @@ while (my $linea = <MIA>){
 	}
 	if ($linea =~ />/ && $r == 0){
 		$name = $linea;
-    chomp ($name);
-    $name =~ s/>//;
-    #print ("($name)\n");
+		chomp ($name);
+		$name =~ s/>//;
+		#print ("($name)\n");
 		$r = 1;
 	}
 }
 if ($r == 1){
-  if (exists $seqs{$name}){
-    print ROB (">$name\n");
-    print ROB ("$sec\n");
-  }
+	if (exists $seqs{$name}){
+		print ROB (">$name\n");
+		print ROB ("$sec\n");
+	}
 	$r = 0;
 	$name = $sec = ();
 }

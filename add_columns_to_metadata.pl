@@ -21,6 +21,7 @@
 # beta.1.0 version
 
 use strict;
+
 #-------------------------------------------------------------------------------
 # Global variables
 
@@ -82,8 +83,8 @@ while (my $linea = <MIA>){
 				#-----------------------------------------------------------------------
 			} else {
 	      	print ROB ("$a[$i]\t");
-	    }
-	  }
+			}
+		}
 	} else {
 		my @a = split (/\t/, $linea);
 		for (my $i = 0; $i <= $#a; $i++){
@@ -93,7 +94,7 @@ while (my $linea = <MIA>){
 				print ROB ("$a[$i]\t");
 			}
 		}
-  }
+	}
 }
 close (ROB);
 close (MIA);
