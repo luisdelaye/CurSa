@@ -18,7 +18,7 @@ Figure 1. CurSa allows to combine information from Nextstrain and GISAID to make
 Next, we show a roadmap of how to use the scripts to download data from Nextstrain Global Analysis and GISAID, curate the names of metadata files downloaded from GISAID, sample sequences from Nextstrain and GISAID and finally run a local Nextstrain analysis (Figure 2). All the above, to study the evolution of SARS-CoV-2 sequences in a specified country.
 
 <p align="center">
-  <img width="720" height="1382" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-2-CurSa.png">
+  <img width="720" height="1276" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-2-CurSa.png">
 </p>
 Figure 2. Roadmap to make curate and sample sequences with CurSa for a Nextstrain analysis on a specified country.
 
