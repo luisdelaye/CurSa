@@ -13,7 +13,7 @@ The scripts in this repository facilitate the curation of metadata downloaded fr
 Figure 1. Roadmap to use CurSa scripts.
 <p></p>
 
-Next, we show how to use the scripts to curate the names of metadata files downloaded from GISAID and sample sequences for phylogenetic analysis with Nextstrain and display in Microreact. All the above, to study the evolution of SARS-CoV-2 sequences in a focal country.
+Next, we show how to use the scripts to curate geographical localities in metadata files downloaded from GISAID and sample sequences for phylogenetic analysis with Nextstrain and display in Microreact. All the above, to study the evolution of SARS-CoV-2 sequences in a focal country.
 
 
 ### Collect data
