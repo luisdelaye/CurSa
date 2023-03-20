@@ -8,7 +8,7 @@ Last update: March 20, 2023.
 The scripts in this repository facilitate the curation of metadata downloaded from GISAID to make phylogenetic analysis of SARS-CoV-2. In particular, the scripts provided here facilitate the curation of locations and divisions. This curation is an important step to properly display of sequences in Nextstrain and Microreact. The scripts provided here also allow to subsample sequences from GISAID to make a phylogeneitc analysis in Nextstrain and its visualization in Microreact (Figure 1). To run CurSa scripts you only need to have Perl and a Linux environment. We used these scripts to create [Mexstrain](https://ira.cinvestav.mx/mexstrain/).
 
 <p align="center">
-  <img width="720" height="1276" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_GitHub_1.png">
+  <img width="720" height="1276" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_CurSa_1.png">
 </p>
 Figure 1. Roadmap to use CurSa scripts.
 <p></p>
