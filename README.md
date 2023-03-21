@@ -8,7 +8,7 @@ Last update: March 20, 2023.
 The scripts in this repository facilitate the curation of metadata downloaded from GISAID to make phylogenetic analysis of SARS-CoV-2. In particular, the scripts provided here facilitate the curation of locations and divisions. This curation is an important step to properly display of sequences in Nextstrain and Microreact. The scripts provided here also allow to subsample sequences from GISAID to make a phylogeneitc analysis in Nextstrain and its visualization in Microreact (Figure 1). To run CurSa scripts you only need to have Perl and a Linux environment. We used these scripts to create [Mexstrain](https://ira.cinvestav.mx/mexstrain/).
 
 <p align="center">
-  <img width="720" height="480" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_CurSa_1.png">
+  <img width="720" height="1276" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_CurSa_1.png">
 </p>
 Figure 1. Roadmap to use CurSa scripts.
 <p></p>
@@ -20,7 +20,7 @@ Next, we show how to use the scripts to curate the names from geographical local
 The first step is to select a focal country. In our case we will select Mexico. Go to GISAID database and search all complete, high coverage and with 'collection date complete' from the country of interest and download them in the format required by Augur 'Input for the Augur pipeline'.  
 
 <p align="center">
-  <img width="735.75" height="607.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_CurSa_2.png">
+  <img width="735.75" height="490.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_CurSa_2.png">
 </p>
 <p style='text-align: right;'> Figure 2. Download all sequences from the focal country. If there are more than 5000 sequences, you will have to download them in different batches. In this case, we download the sequences from each one of the mexican states separatedly. </p>
 
