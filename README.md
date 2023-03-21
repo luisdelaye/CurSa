@@ -17,12 +17,12 @@ Next, we show how to use the scripts to curate the names from geographical local
 
 ### Collect data
 
-The first step is to select a focal country. In our case we will select Mexico. Go to GISAID database and search all complete, high coverage and with 'collection date complete' from the country of interest and download them in the format required by Augur 'Input for the Augur pipeline'.  
+The first step is to select a focal country. In our case we will select Mexico. Go to GISAID database and search all complete, high coverage genomes and with 'collection date complete' from the country of interest and download them in the format required by Augur 'Input for the Augur pipeline'. If there are more than 5000 genome sequences from the focal country, you will have to download the sequences in different batches. In the case of Mexico, we downloaded the sequences from each one of the states separatedly (Figure 2).
 
 <p align="center">
   <img width="735.75" height="490.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_CurSa_2.png">
 </p>
-<p style='text-align: right;'> Figure 2. Download all sequences from the focal country. If there are more than 5000 sequences, you will have to download them in different batches. In this case, we download the sequences from each one of the mexican states separatedly. </p>
+<p style='text-align: right;'> Figure 2. Download all sequences from the focal country. </p>
 
 
 Also in [GISAID](https://www.gisaid.org), download all the 'Patient status metadata' associated to the genome sequences from the country (or any other geographical region) on which you would like to focus your Nextstrain analysis. In this case, we will download the metadata from all complete and high coverage sequences from Mexico (gisaid_hcov-19_2022\_##\_##.tsv). You can find this information in 'Search -> Location -> North America -> Mexico' and by clicking in the boxes 'complete' and 'high coverage' and when asked, download the 'Patient status metadata' (Figure 4). 
