@@ -13,19 +13,16 @@ The scripts in this repository facilitate the curation of metadata downloaded fr
 Figure 1. Roadmap to use CurSa scripts.
 <p></p>
 
-Next, we show how to use the scripts to curate geographical localities in metadata files downloaded from GISAID and sample sequences for phylogenetic analysis with Nextstrain and display in Microreact. All the above, to study the evolution of SARS-CoV-2 sequences in a focal country.
-
+Next, we show how to use the scripts to curate the names from geographical localities in the metadata file downloaded from GISAID and sample SARS-CoV-2 sequences for phylogenetic analysis with Nextstrain and display in Microreact.
 
 ### Collect data
 
-First collect the data. Go to the latest global analysis provided by [Nextstrain](https://nextstrain.org/ncov/global), scroll to the bottom of the page, select 'DOWNLOAD DATA' and then 'ACKNOWLEDGEMENTS (TSV)'. You will get a file named nextstrain_ncov_gisaid_global_acknowledgements.tsv. 
-
-Next, go to [GISAID](https://www.gisaid.org) and download all FASTA sequences (sequences.fasta) and asociated metadata (metadata.tsv). You will find these files in 'Downloads -> Downoads packages'. Also download Spike protein sequences in FASTA format (spikeprot####.fasta). You can find these sequences in 'Downloads -> Alignment and proteins'. In Figure 3 you can see where to find these files in GISAID. Don't forget to decompress these files.
+The first step is to select a focal country. In our case we will select Mexico. Go to GISAID database and search all complete, high coverage and with 'collection date complete' from the country of interest and download them in the format required by Augur 'Input for the Augur pipeline'.  
 
 <p align="center">
-  <img width="735.75" height="607.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-3-CurSa.png">
+  <img width="735.75" height="607.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_CurSa_2.png">
 </p>
-<p style='text-align: right;'> Figure 3. Location of the files sequence.fasta, metadata.tsv and spikeprot####.fasta in GISAID. </p>
+<p style='text-align: right;'> Figure 2. Download all sequences from the focal country. If there are more than 5000 sequences, you will have to download them in different batches. In this case, we download the sequences from each one of the mexican states separatedly. </p>
 
 
 Also in [GISAID](https://www.gisaid.org), download all the 'Patient status metadata' associated to the genome sequences from the country (or any other geographical region) on which you would like to focus your Nextstrain analysis. In this case, we will download the metadata from all complete and high coverage sequences from Mexico (gisaid_hcov-19_2022\_##\_##.tsv). You can find this information in 'Search -> Location -> North America -> Mexico' and by clicking in the boxes 'complete' and 'high coverage' and when asked, download the 'Patient status metadata' (Figure 4). 
