@@ -88,21 +88,13 @@ Number of genomes: 35633
 
 ```
 
-Please replace the \_####\_##\_##.tsv with an actual date and move this file to your working directory. Note: you may want to run the above script in a separate directory to avoid having an excess of files in your main working directory (just, don't forget to move to that separate directory all the gisaid_hcov-19_\*.tsv files before running the script). 
+Now, rename the outfiles and move them to a working directory (for instance, we use data20230223/): 
 
-In summary, you will have to download from Nextstrain and GISAID the following files:
-
-* nextstrain_ncov_global_metadata.tsv -> latest global analysis provided by Nextrain
-
-* sequences.fasta -> fasta genome sequences downloaded from GISAID
-
-* metadata.tsv -> metadata downloaded from GISAID
-
-* spikeprot####.fasta -> Spike protein sequences from GISAID
-
-* gisaid_hcov-19_2022\_##\_##.tsv -> metadata downloaded from GISAID associated to the genomes of interest
-
-The above files must be in the same directory as the Perl scripts you downloaded from Github.
+```
+GISAID20230223/
+$ mv outfile.tsv ../data20230223/Mexico.metadata.tsv
+$ mv outfile.fasta ../data20230223/Mexico.sequences.fasta
+```
 
 ### Curate the files containing the names of geographic localities 
 
