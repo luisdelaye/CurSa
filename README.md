@@ -34,7 +34,7 @@ $ mv 1677184368344.sequences.fasta Aguascalientes.sequences.fasta
 $ rm gisaid_auspice_input_hcov-19_2023_02_23_20.tar
 ```
 
-Just keep the '.metadata.tsv' and '.sequences.fasta' extension. These will be used by the next script to recognize the files. Next, within the folder that contains the files, you will need to run the script:
+Just keep the '.metadata.tsv' and '.sequences.fasta' extensions. These will be used by the next script to recognize the files. Next, within the folder that contains the files, you will need to run the script:
 
 ```
 GISAID20230223/
