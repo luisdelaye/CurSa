@@ -24,26 +24,68 @@ The first step is to select a focal country. In our case we will select Mexico. 
 </p>
 <p style='text-align: right;'> Figure 2. Download all sequences from the focal country. </p>
 
-
-Also in [GISAID](https://www.gisaid.org), download all the 'Patient status metadata' associated to the genome sequences from the country (or any other geographical region) on which you would like to focus your Nextstrain analysis. In this case, we will download the metadata from all complete and high coverage sequences from Mexico (gisaid_hcov-19_2022\_##\_##.tsv). You can find this information in 'Search -> Location -> North America -> Mexico' and by clicking in the boxes 'complete' and 'high coverage' and when asked, download the 'Patient status metadata' (Figure 4). 
-
-<p align="center">
-  <img width="736.5" height="596.25" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-4-CurSa.png">
-</p>
-<p style='text-align: right;'> Figure 4. Download all the metadata asociated to the country on which you would like to focus your Nextstrain analysis. </p>
-
-
-Because you can download a maximum of 5,000 records each time, you may need to download several files, one for each state/division. In the case of Mexico, we need to download one file for each one of the states (Aguascalientes, Baja California, Baja California Sur, etc.) We recommend to add the name of the state to each of the files (avoid spaces or accents in the name of the files), for example:
+We recommend to download the files to a separate folder to keep order (for instance we downloaded the file to GISAID20230223/). When downloading the sequences from the different states (Aguascalientes, Baja California, Baja California Sur, etc.) decompress them and add the name of the state to each one of the files (avoiding spaces or accents in the name of the files), for example:
 
 ```
-$ mv gisaid_hcov-19_2022_01_11_01.tsv gisaid_hcov-19_2022_01_11_01_Aguascalientes.tsv
+GISAID20230223/
+$ tar -xf gisaid_auspice_input_hcov-19_2023_02_23_20.tar
+$ mv 1677184368344.metadata.tsv Aguascalientes.metadata.tsv
+$ mv 1677184368344.sequences.fasta Aguascalientes.sequences.fasta
+$ rm gisaid_auspice_input_hcov-19_2023_02_23_20.tar
 ```
 
-Just keep the first part of the filename 'gisaid_hcov-19_' and the extension 'tsv'. Next, you will need to run the script:
+Just keep the '.metadata.tsv' and '.sequences.fasta' extension. These will be used by the next script to recognize the files. Next, within the folder that contains the files, you will need to run the script:
 
 ```
-$ perl concatenate_tsv_files.pl gisaid_hcov-19_
-$ mv outfile.tsv gisaid_hcov-19_####_##_##.tsv
+GISAID20230223/
+$ perl concatenate_tsv_files.pl
+(1) Aguascalientes.metadata.tsv
+(2) Baja_California.metadata.tsv
+(3) Baja_California_Sur.metadata.tsv
+(4) Campeche.metadata.tsv
+(5) Cancun.metadata.tsv
+(6) CDMX.metadata.tsv
+(7) Chiapas.metadata.tsv
+(8) Chihuahua.metadata.tsv
+(9) Ciudad_de_Mexico.metadata.tsv
+(10) CMX.metadata.tsv
+(11) Coahuila.metadata.tsv
+(12) Colima.metadata.tsv
+(13) Distrito_Federal.metadata.tsv
+(14) Durango.metadata.tsv
+(15) Estado_de_Mexico.metadata.tsv
+(16) Guanajuato.metadata.tsv
+(17) Guerrero.metadata.tsv
+(18) Hidalgo.metadata.tsv
+(19) Jalisco.metadata.tsv
+(20) Mexico_City_2019-01-01_2020-12-31.metadata.tsv
+(21) Mexico_City_2021-01-01_2021-06-30.metadata.tsv
+(22) Mexico_City_2021-07-01_2021-12-31.metadata.tsv
+(23) Mexico_City_2022-01-01_2022-12-31.metadata.tsv
+(24) Michoacan.metadata.tsv
+(25) Morelos.metadata.tsv
+(26) Nayarit.metadata.tsv
+(27) Nuevo_Leon.metadata.tsv
+(28) Oaxaca.metadata.tsv
+(29) Puebla.metadata.tsv
+(30) Queretaro.metadata.tsv
+(31) Quintana_Roo.metadata.tsv
+(32) San_Luis_Potosi.metadata.tsv
+(33) Sinaloa.metadata.tsv
+(34) Sonora.metadata.tsv
+(35) State_of_Mexico.metadata.tsv
+(36) Tabasco.metadata.tsv
+(37) Tamaulipas.metadata.tsv
+(38) Tlaxcala.metadata.tsv
+(39) Veracruz.metadata.tsv
+(40) Yucatan.metadata.tsv
+(41) Zacatecas.metadata.tsv
+
+------------------------------------------------------------------------
+Number of files..: 41
+Number of genomes: 35633
+------------------------------------------------------------------------
+
 ```
 
 Please replace the \_####\_##\_##.tsv with an actual date and move this file to your working directory. Note: you may want to run the above script in a separate directory to avoid having an excess of files in your main working directory (just, don't forget to move to that separate directory all the gisaid_hcov-19_\*.tsv files before running the script). 
