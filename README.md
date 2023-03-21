@@ -5,7 +5,7 @@ Perl scripts to Curate metadata information and Sample SARS-CoV-2 genome sequenc
 
 Last update: March 20, 2023.
 
-The scripts in this repository facilitate the curation of metadata downloaded from GISAID to make phylogenetic analysis of SARS-CoV-2. In particular, the scripts provided here facilitate the curation of locations and divisions. This curation is an important step to properly display of sequences in Nextstrain and Microreact. The scripts provided here also allow to subsample sequences from GISAID to make a phylogeneitc analysis in Nextstrain and its visualization in Microreact (Figure 1). To run CurSa scripts you only need to have Perl and a Linux environment. We used these scripts to create [Mexstrain](https://ira.cinvestav.mx/mexstrain/).
+The scripts in this repository facilitate the curation of metadata downloaded from GISAID to make phylogenetic analysis of SARS-CoV-2. In particular, the scripts provided here facilitate the curation of the geographic categories 'location' and 'division'. This curation is an important step to properly display the sampling origin of genome sequences in Nextstrain and Microreact. The scripts provided here also allow to subsample sequences from GISAID to make a phylogeneitc analysis in Nextstrain (Figure 1). To run CurSa scripts you only need to have Perl and a Linux environment. We used these scripts to create [Mexstrain](https://ira.cinvestav.mx/mexstrain/).
 
 <p align="center">
   <img width="720" height="1276" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_CurSa_1.png">
@@ -13,18 +13,20 @@ The scripts in this repository facilitate the curation of metadata downloaded fr
 Figure 1. Roadmap to use CurSa scripts.
 <p></p>
 
-Next, we show how to use the scripts to curate the names from geographical localities in the metadata file downloaded from GISAID and sample SARS-CoV-2 sequences for phylogenetic analysis with Nextstrain and display in Microreact.
+Next, we show how to use the scripts to curate the names from geographical localities in the metadata and sample SARS-CoV-2 sequences for phylogenetic analysis with Nextstrain and display in Microreact.
 
 ### Collect data
 
-The first step is to select a focal country. In our case we will select Mexico. Go to GISAID database and search all complete, high coverage genomes and with 'collection date complete' from the country of interest and download them in the format required by Augur 'Input for the Augur pipeline'. If there are more than 5000 genome sequences from the focal country, you will have to download the sequences in different batches. In the case of Mexico, we downloaded the sequences from each one of the states separatedly (Figure 2).
+The first step is to select a focal country. In our case we will select Mexico. Go to GISAID database and search all complete, high coverage genomes with collection date complete from the country of interest and download them in the format: 'Input for the Augur pipeline'. If there are more than 5000 genome sequences from the focal country, you will have to download the genome sequences in different batches. In the case of Mexico, we downloaded the sequences from each one of the states separatedly (Figure 2).
 
 <p align="center">
   <img width="735.75" height="490.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_CurSa_2.png">
 </p>
-<p style='text-align: right;'> Figure 2. Download all sequences from the focal country. </p>
+<p style='text-align: right;'> Figure 2. Search and download all genome sequences from the focal country. </p>
 
-We recommend to download the files to a separate folder to keep order (for instance we downloaded the file to GISAID20230223/). When downloading the sequences from the different states (Aguascalientes, Baja California, Baja California Sur, etc.) decompress them and add the name of the state to each one of the files (avoiding spaces or accents in the name of the files), for example:
+We recommend to download the files to a separate folder. For instance we download them to GISAID20230223/. 
+<p></p>
+When downloading the sequences from the different states (Aguascalientes, Baja California, Baja California Sur, etc.) decompress them and add the name of the state to each one of the files (avoiding spaces or accents in the name of the files), for example:
 
 ```
 GISAID20230223/
@@ -98,10 +100,10 @@ $ mv outfile.fasta ../data20230223/Mexico.sequences.fasta
 
 ### Curate the files containing the names of geographic localities 
 
-Now comes the toughest part: to assure that the names of the geographic localities are spelled the same in color_ordering.tsv, lat_longs.tsv and metadata.tsv files (Figure 5). First, a bit of background. We will asume that you have a [local Nextstrain installation](https://docs.nextstrain.org/en/latest/install.html). Now, Nextstrain store the names of geographic localities in two files: color_ordering.tsv and lat_longs.tsv. These files live in: ncov/defaults/ wihtin your Nextstrain installation directory. The first file (color_ordering.tsv) is used by Nextstrain to know if a given locality is a 'region', 'country', 'division' or a 'location'; the second file (lat_longs.tsv) keep record of the geographic coordinates of all the places found in color_ordering.tsv. These files were prepared by the people of Nextstrain and (almost always!) share the same geographic localities. 
+Now comes the toughest part: to assure that the names of the geographic localities are spelled the same in color_ordering.tsv, lat_longs.tsv and metadata.tsv files (Figure 3). First, a bit of background. We will asume that you have a [local Nextstrain installation](https://docs.nextstrain.org/en/latest/install.html). Now, Nextstrain store the names of geographic localities in two files: color_ordering.tsv and lat_longs.tsv. These files live in: ncov/defaults/ wihtin your Nextstrain installation directory. The first file (color_ordering.tsv) is used by Nextstrain to know if a given locality is a 'region', 'country', 'division' or a 'location'; the second file (lat_longs.tsv) keep record of the geographic coordinates of all the places found in color_ordering.tsv. These files were prepared by the people of Nextstrain and (almost always!) share the same geographic localities. 
 
 <p align="center">
-  <img width="720" height="405" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-5-CurSa.jpeg">
+  <img width="720" height="405" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_CurSa_3.jpeg">
 </p>
 <p style='text-align: right;'> Figure 5. The names of the geographic localities (highlighted in yellow) have to coincide between color_ordering.tsv, lat_longs.tsv and metadata.tsv files. </p>
 
