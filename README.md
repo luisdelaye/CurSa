@@ -111,10 +111,13 @@ By the way, [Sombrerete](https://es.wikipedia.org/wiki/Sombrerete) is a Mexican 
 
 Next, the metadata.tsv file donwloaded from GISAID has a column whith the geographic location where each coronavirus was sampled. The information in this column is used by Nextstrain to geolocalize the samples. To do so, each geographic location whithin metadata.tsv has to be represented in color_ordering.tsv and lat_longs.tsv files. However, this is not always the case because the names in metadata.tsv are captured by many different people around the world and sometimes these people introduce typos; or the names in metadata.tsv and in color_ordering.tsv and lat_longs.tsv files can be in different languages. In addition, there can be geographic localities in metadata.tsv that are lacking in color_ordering.tsv (and lat_longs.tsv) because the people from Nextstrain hasn't had the time to add them. We will see next how to fix these problems. Just keep in mind that at the end, all names from the geographic localities in metadata.tsv have to be in color_ordering.tsv; and every name from a geographic locality in metadata.tsv has to be associated to a geographic coordinate in lat_longs.tsv.
 
-The first thing to do is to check whether the names of the geographic localities in metadata.tsv are found in color_ordering.tsv. We will do this specifically for the names of the country on which you would like to focus your Nextstrain analysis (in this case: Mexico). For this we use the script compare_names.pl. We recommend you to make security copies of the original color_ordering.tsv and lat_longs.tsv files (in case you would like to recover the original files) and then make a copy of color_ordering.tsv and lat_longs.tsv to your working directory. Then run the script:
+The first thing to do is to check whether the names of the geographic localities in metadata.tsv are found in color_ordering.tsv. We will do this specifically for the names of the country on which you would like to focus your Nextstrain analysis (in this case Mexico). For this we use the script compare_names.pl. We recommend you to make security copies of the original color_ordering.tsv and lat_longs.tsv files (in case you would like to recover the original files) and then make a copy of color_ordering.tsv and lat_longs.tsv to your working directory. Then run the script:
 
 ```
-$ perl compare_names.pl color_ordering.tsv metadata.tsv Mexico
+data20230223/
+$ cp ~/Software/ncov/defaults/color_ordering.tsv .
+$ cp ~/Software/ncov/defaults/lat_longs.tsv .
+$ perl compare_names.pl color_ordering.tsv Mexico.metadata.tsv Mexico
 ```
 
 This script will check if the names of the geographical localities in metadata.tsv are found in color_ordering.tsv. If a name is not found, it will print a warning message to the screen (Part 1 of the output). This script will also check whether the same name is repeated whithin different geographic contexts (Part 2). We will see later that this may not be an error by itself. Note that if you analyze the sequences from a country whose name contain spaces (like 'Costa Rica') you have to replace spaces with underscores (i.e. Costa_Rica). In our example data, the first time you run the compare_names.pl script you will get the following output:
@@ -122,68 +125,104 @@ This script will check if the names of the geographical localities in metadata.t
 ```
 ------------------------------------------------------------------------
 Part 1
-Are there are names in metadata.tsv lacking in color_ordering.tsv?
+Are there names in Mexico.metadata.tsv lacking in color_ordering.tsv?
 
-Warning! name not found in color_ordering.original.tsv: 'Pabello de A'
-context in metadata.tsv: North America / Mexico / Aguascalientes / Pabello de A
+Warning! name not found in color_ordering.tsv: 'Aguasacalientes'
+context in Mexico.metadata.tsv: North America / Mexico / Aguascalientes / Aguasacalientes
 
-Warning! name not found in color_ordering.tsv: 'State of Mexico'
-context in metadata.tsv: North America / Mexico / State of Mexico
+Warning! name not found in color_ordering.tsv: 'Pabello de A'
+context in Mexico.metadata.tsv: North America / Mexico / Aguascalientes / Pabello de A
+
+Warning! name not found in color_ordering.tsv: 'Ensenada'
+context in Mexico.metadata.tsv: North America / Mexico / Baja California / Ensenada
+
+Warning! name not found in color_ordering.tsv: 'La Paz'
+context in Mexico.metadata.tsv: North America / Mexico / Baja California Sur / La Paz
+
+Warning! name not found in color_ordering.tsv: 'Carmen'
+context in Mexico.metadata.tsv: North America / Mexico / Campeche / Carmen
 
 Warning! name not found in color_ordering.tsv: 'Cancun'
-context in metadata.tsv: North America / Mexico / Cancun
+context in Mexico.metadata.tsv: North America / Mexico / Cancun
+
+Warning! name not found in color_ordering.tsv: 'CDMX'
+context in Mexico.metadata.tsv: North America / Mexico / CDMX
 
 Warning! name not found in color_ordering.tsv: 'Cuauhtemoc'
-context in metadata.tsv: North America / Mexico / Chihuahua / Cuauhtemoc
+context in Mexico.metadata.tsv: North America / Mexico / Chihuahua / Cuauhtemoc
 
-Warning! name not found in color_ordering.tsv: 'Huixtla'
-context in metadata.tsv: North America / Mexico / Chiapas / Huixtla
+Warning! name not found in color_ordering.tsv: 'Ciudad de Mexico'
+context in Mexico.metadata.tsv: North America / Mexico / Ciudad de Mexico
 
-Warning! name not found in color_ordering.tsv: 'Tapachula'
-context in metadata.tsv: North America / Mexico / Chiapas / Tapachula
+Warning! name not found in color_ordering.tsv: 'CMX'
+context in Mexico.metadata.tsv: North America / Mexico / CMX
 
-Warning! name not found in color_ordering.tsv: 'Acuña'
-context in metadata.tsv: North America / Mexico / Coahuila / Acuña
+Warning! name not found in color_ordering.tsv: 'Frontera'
+context in Mexico.metadata.tsv: North America / Mexico / Coahuila / Frontera
 
-Warning! name not found in color_ordering.tsv: 'Ciudad Juarez'
-context in metadata.tsv: North America / Mexico / Chihuahua / Ciudad Juarez
+Warning! name not found in color_ordering.tsv: 'Cardonal Hgo'
+context in Mexico.metadata.tsv: North America / Mexico / Hidalgo / Cardonal Hgo
 
-... (many more warnings) ...
+Warning! name not found in color_ordering.tsv: 'Cuauhtemoc'
+context in Mexico.metadata.tsv: North America / Mexico / Mexico City / Cuauhtemoc
+
+Warning! name not found in color_ordering.tsv: 'Guadalupe'
+context in Mexico.metadata.tsv: North America / Mexico / Nuevo Leon / Guadalupe
+
+Warning! name not found in color_ordering.tsv: 'Gral. Escobedo'
+context in Mexico.metadata.tsv: North America / Mexico / Nuevo Leon / Gral. Escobedo
+
+Warning! name not found in color_ordering.tsv: 'Abasolo Nvo Leon'
+context in Mexico.metadata.tsv: North America / Mexico / Nuevo Leon / Abasolo Nvo Leon
+
+Warning! name not found in color_ordering.tsv: 'Rioverde'
+context in Mexico.metadata.tsv: North America / Mexico / San Luis Potosi / Rioverde
+
+Warning! name not found in color_ordering.tsv: 'Nogales'
+context in Mexico.metadata.tsv: North America / Mexico / Sonora / Nogales
+
+Warning! name not found in color_ordering.tsv: 'State of Mexico'
+context in Mexico.metadata.tsv: North America / Mexico / State of Mexico
+
+Warning! name not found in color_ordering.tsv: 'State of Mexico'
+context in Mexico.metadata.tsv: North America / Mexico / State of Mexico / Nicolas Romero
+
+Warning! name not found in color_ordering.tsv: 'State of Mexico'
+context in Mexico.metadata.tsv: North America / Mexico / State of Mexico / Naucalpan de Juarez
+
+Warning! name not found in color_ordering.tsv: 'Cardenas'
+context in Mexico.metadata.tsv: North America / Mexico / Tabasco / Cardenas
+
+Warning! name not found in color_ordering.tsv: 'Altamira'
+context in Mexico.metadata.tsv: North America / Mexico / Tamaulipas / Altamira
+
+Warning! name not found in color_ordering.tsv: 'Cordoba'
+context in Mexico.metadata.tsv: North America / Mexico / Veracruz / Cordoba
+
+Warning! name not found in color_ordering.tsv: 'Rio Grande'
+context in Mexico.metadata.tsv: North America / Mexico / Zacatecas / Rio Grande
+
+Warning! name not found in color_ordering.tsv: 'Calera'
+context in Mexico.metadata.tsv: North America / Mexico / Zacatecas / Calera
+
+Warning! name not found in color_ordering.tsv: 'Guadalupe'
+context in Mexico.metadata.tsv: North America / Mexico / Zacatecas / Guadalupe
 
 ------------------------------------------------------------------------
 Part 2
 Checking if the same name is repeated in different geographic contexts
 
-Warning! the name 'Aguascalientes' is in more than one geographic context:
-North America / Mexico / 'Aguascalientes'
-North America / Mexico / Aguascalientes / 'Aguascalientes'
-North America / Mexico / Aguascallientes / 'Aguascalientes'
+Warning! the name 'Cuauhtemoc' is in more than one geographic context:
+North America / Mexico / Chihuahua / 'Cuauhtemoc'
+North America / Mexico / Mexico City / 'Cuauhtemoc'
 
-Warning! the name 'Altamira' is in more than one geographic context:
-North America / Mexico / Nuevo Leon / 'Altamira'
-North America / Mexico / Tamaulipas / 'Altamira'
-
-Warning! the name 'Baja California' is in more than one geographic context:
-North America / Mexico / 'Baja California'
-North America / Mexico / Chiapas / 'Baja California'
-
-Warning! the name 'Campeche' is in more than one geographic context:
-North America / Mexico / 'Campeche'
-North America / Mexico / Campeche / 'Campeche'
+Warning! the name 'Guadalupe' is in more than one geographic context:
+North America / Mexico / Nuevo Leon / 'Guadalupe'
+North America / Mexico / Zacatecas / 'Guadalupe'
 
 Warning! the name 'Tecate' is in more than one geographic context:
 North America / Mexico / Baja California / 'Tecate'
 North America / Mexico / Baja California Sur / 'Tecate'
-
-Warning! the name 'Veracruz' is in more than one geographic context:
-North America / Mexico / 'Veracruz'
-North America / Mexico / Veracruz / 'Veracruz'
-
-Warning! the name 'Zacatecas' is in more than one geographic context:
-North America / Mexico / 'Zacatecas'
-North America / Mexico / Zacatecas / 'Zacatecas'
-
-... (many more warnings) ...
 
 ------------------------------------------------------------------------
 Now run substitute_names.pl.
@@ -191,79 +230,91 @@ See https://github.com/luisdelaye/CurSa/ for more details.
 ------------------------------------------------------------------------
 ```
 
-As mentioned above, the output has two sections. The first part, shows if there is a name in metadata.tsv that is not found in color_ordering.tsv. The warning shows the lacking name together with its geographical context. For instance, the name 'Huixtla' is lacking in color_ordering.tsv and its geographical context whitin metadata.tsv is: 'North America / Mexico / Chiapas / Huixtla'. It is important to understand that whithin metadata.tsv the names of the geographic localities are organized in the following way: 'region / country / division / location'. Not all entries in metadata.tsv have the four categories, some of them have only 'region / country / division ' or fewer. In this case 'Huixtla' is a 'location'.
+As mentioned above, the output has two sections. The first part, shows if there is a name in metadata.tsv that is not found in color_ordering.tsv. The warning shows the name that is lacking together with its geographical context. For instance, the name 'Rio Grande' is lacking in color_ordering.tsv and its geographical context whitin metadata.tsv is: 'North America / Mexico / Zacatecas / Rio Grande'. It is important to understand that whithin metadata.tsv the names of the geographic localities are organized in the following way: 'region\tcountry\tdivision\tlocation' (where \t stands for tab). Not all entries in metadata.tsv have the four categories, some of them have only 'region\tcountry\tdivision' or less. In this case 'Rio Grande' is a 'location'.
 
-The second part of the output shows whether there are names repeated within differen geographical contexts. Note that this may not be an error by itself since it is common to find localities sharing the same name. For instance, see the case of 'Campeche' which can refer to the State of Campeche or to the City of Campeche. By the way, the true name of the State of Campeche is: 'Estado Libre y Soberano de Campeche' and the true name of the City of Campeche is: 'San Francisco de Campeche'. But for short, people uses Campeche for both. In cases like this, it is not necesary to change the names in metadata.tsv. 
-
-Now see the case of 'Altamira' (also in the second part of the output) which is in the states of 'Nuevo Leon' and 'Tamaulipas'. This is a problem because each name has to be associated with a single geographic coordinate in lat_longs.tsv. To fix this, we will have to asign different names to the cities of 'Altamira' from 'Nuevo Leon' and from 'Tamaulipas' (for example, we can change the names to: 'Altamira Nuevo Leon' and 'Altamira Tamaulipas'). But keep in mind that the same name 'Altamira Nuevo Leon' has to be in metadata.tsv, color_ordering.tsv and lat_longs.tsv.
-
-In addition to the above, you may find some surprises. For instance, you may think that it is a mistake that 'Baja California' is a 'location' within the state of 'Chiapas', however it is not. There is in fact a town named 'Baja California' in the State of 'Chiapas' (you can chech this if you google: Baja California Chiapas). 
-
-Finally see the case of 'Aguascalientes' (the city) wich is in two geographical contexts, in one the State of 'Aguascalientes' is spelled correctly: 'North America / Mexico / Aguascalientes' and in the other it has a typo: 'North America / Mexico / Aguascallientes'. We will see how to fix all the above problems soon.
+The second part of the output shows whether there are names repeated within differen geographical contexts. Note that this may not be an error by itself since it is common to find localities sharing the same name. For instance, see the case of 'Guadalupe' which can refer to a city in 'Nuevo Leon' or to a city in the state of Zacatecas. We will see how to fix these cases. 
 
 In addition to report the inconsistencies to the screen, compare_names.pl creates a text file named substitute_proposal.tsv that contains three columns separated by tabs:
 
 ```
-'Asientos'  'North America / Mexico / Aguascalientes / Asientos'  'North America / Mexico / Aguascalientes / Asientos'
-'Calvillo'  'North America / Mexico / Aguascalientes / Calvillo'  'North America / Mexico / Aguascalientes / Calvillo'
-'Jesus Maria' 'North America / Mexico / Aguascalientes / Jesus Maria' 'North America / Mexico / Aguascalientes / Jesus Maria'
-'Pabello de A'  'North America / Mexico / Aguascalientes / Pabello de A'  'North America / Mexico / Aguascalientes / Pabello de A'
-'Aguascallientes' 'North America / Mexico / Aguascallientes / Aguascalientes' 'North America / Mexico / Aguascallientes / Aguascalientes'
-'Tecate'  'North America / Mexico / Baja California / Tecate' 'North America / Mexico / Baja California / Tecate'
-'Los Cabos' 'North America / Mexico / Baja California Sur / Los Cabos'  'North America / Mexico / Baja California Sur / Los Cabos'
-'Tecate'  'North America / Mexico / Baja California Sur / Tecate' 'North America / Mexico / Baja California Sur / Tecate'
-'CDMX'  'North America / Mexico / CDMX' 'North America / Mexico / CDMX'
-'CMX' 'North America / Mexico / CMX'  'North America / Mexico / CMX'
-'Calkini' 'North America / Mexico / Campeche / Calkini' 'North America / Mexico / Campeche / Calkini'
+'Aguasacalientes'	'North America / Mexico / Aguascalientes / Aguasacalientes'	'North America / Mexico / Aguascalientes / Aguasacalientes'
+'Pabello de A'	'North America / Mexico / Aguascalientes / Pabello de A'	'North America / Mexico / Aguascalientes / Pabello de A'
+'Ensenada'	'North America / Mexico / Baja California / Ensenada'	'North America / Mexico / Baja California / Ensenada'
+'La Paz'	'North America / Mexico / Baja California Sur / La Paz'	'North America / Mexico / Baja California Sur / La Paz'
+'CDMX'	'North America / Mexico / CDMX'	'North America / Mexico / CDMX'
+'CMX'	'North America / Mexico / CMX'	'North America / Mexico / CMX'
+'Carmen'	'North America / Mexico / Campeche / Carmen'	'North America / Mexico / Campeche / Carmen'
+'Cancun'	'North America / Mexico / Cancun'	'North America / Mexico / Cancun'
+'Cuauhtemoc'	'North America / Mexico / Chihuahua / Cuauhtemoc'	'North America / Mexico / Chihuahua / Cuauhtemoc'
+'Ciudad de Mexico'	'North America / Mexico / Ciudad de Mexico'	'North America / Mexico / Ciudad de Mexico'
+'Frontera'	'North America / Mexico / Coahuila / Frontera'	'North America / Mexico / Coahuila / Frontera'
+'Cardonal Hgo'	'North America / Mexico / Hidalgo / Cardonal Hgo'	'North America / Mexico / Hidalgo / Cardonal Hgo'
+'Cuauhtemoc'	'North America / Mexico / Mexico City / Cuauhtemoc'	'North America / Mexico / Mexico City / Cuauhtemoc'
+'Abasolo Nvo Leon'	'North America / Mexico / Nuevo Leon / Abasolo Nvo Leon'	'North America / Mexico / Nuevo Leon / Abasolo Nvo Leon'
+'Gral. Escobedo'	'North America / Mexico / Nuevo Leon / Gral. Escobedo'	'North America / Mexico / Nuevo Leon / Gral. Escobedo'
+'Guadalupe'	'North America / Mexico / Nuevo Leon / Guadalupe'	'North America / Mexico / Nuevo Leon / Guadalupe'
+'Rioverde'	'North America / Mexico / San Luis Potosi / Rioverde'	'North America / Mexico / San Luis Potosi / Rioverde'
+'Nogales'	'North America / Mexico / Sonora / Nogales'	'North America / Mexico / Sonora / Nogales'
+'State of Mexico'	'North America / Mexico / State of Mexico'	'North America / Mexico / State of Mexico'
+'State of Mexico'	'North America / Mexico / State of Mexico / Nicolas Romero'	'North America / Mexico / State of Mexico / Nicolas Romero'
+'Cardenas'	'North America / Mexico / Tabasco / Cardenas'	'North America / Mexico / Tabasco / Cardenas'
+'Altamira'	'North America / Mexico / Tamaulipas / Altamira'	'North America / Mexico / Tamaulipas / Altamira'
+'Cordoba'	'North America / Mexico / Veracruz / Cordoba'	'North America / Mexico / Veracruz / Cordoba'
+'Calera'	'North America / Mexico / Zacatecas / Calera'	'North America / Mexico / Zacatecas / Calera'
+'Guadalupe'	'North America / Mexico / Zacatecas / Guadalupe'	'North America / Mexico / Zacatecas / Guadalupe'
+'Rio Grande'	'North America / Mexico / Zacatecas / Rio Grande'	'North America / Mexico / Zacatecas / Rio Grande'
+'Tecate'	'North America / Mexico / Baja California / Tecate'	'North America / Mexico / Baja California / Tecate'
+'Tecate'	'North America / Mexico / Baja California Sur / Tecate'	'North America / Mexico / Baja California Sur / Tecate'
 
 ...(many more rows)...
 
 ```
 
-The first column shows the metadata.tsv name that is lacking in color_ordering.tsv; the second column shows the geographical context of the name; and the third column is identical to the second one. Each column is separated by a tab. By editing the information in the third column, we will use this file to create a new metadata file where all names from geographic localities match those of color_ordering.tsv. Please, rename this file in case you have to do several rounds of curation:
+The first column shows the name of the geographic location in metadata.tsv that is lacking in color_ordering.tsv; the second column shows the geographical context of the name; and the third column is identical to the second one. Each column is separated by a tab. By editing and correcting the information in the third column, a new metadata file will be created with the error corrected. Please, rename this file in case you have to do several rounds of curation:
 
 ```
+data20230223/
 $ mv substitute_proposal.tsv substitute_proposal_round1.tsv
 ```
 
-Now that you have an overview of which names do not match, we are going to proceed to fix them. For this, we will use the script substitute_names.pl, the file substitute_proposal_round1.tsv and some manual curation. We will review case per case.
+Now that you have an overview of which names do not match, we are going to proceed to fix them. For this, we will use the script substitute_names.pl, the file substitute_proposal_round1.tsv and some manual curation. We will review three main cases.
 
 #### Case 1: a name in metadata.tsv is lacking in color_ordering.tsv and lat_longs.tsv
 
-We will begin by adding to color_ordering.tsv (and lat_longs.tsv) those extra names that are found in metadata.tsv. Start by opening the color_ordering.tsv file with a text edditor (like [ATOM](https://atom.io)). Then, take a look at the first part of the output from compare_names.pl. We will start by analysing 'Huixtla'. By looking at color_ordering.tsv you will find that the location of 'Huixtla' is simply lacking. In this case, simply add the name 'Huixtla' to color_ordering.tsv. You will have to add this name in its proper location. For instance, 'Huixtla' is a 'location' whithin de 'division' of 'Chiapas'. Therefore you will have to add the following text to color_ordering.tsv:
+We will begin by adding to color_ordering.tsv (and lat_longs.tsv) those extra names that are found in metadata.tsv. Start by opening the color_ordering.tsv file with a text edditor ([ATOM](https://atom.io)). Then, take a look at the first part of the output from compare_names.pl. We will start by analysing 'Cancun'. By looking at color_ordering.tsv you will find that the location of 'Cancun' is lacking. In this case, simply add the name 'Cancun' to color_ordering.tsv. You will have to add this name under the state of 'Quintana Roo'. For instance, 'Cancun' is a 'location' whithin de 'division' of 'Quintana Roo'. Therefore you will have to add the following text to color_ordering.tsv:
 
 ```
-# Chiapas
-location	Huixtla
+# Quintana Roo
+location	Cancun
 ```
 
-Note that there is a tab between the word 'location' and 'Huixtla'. Because you added a new name to color_ordering.pl, you will have to add this name also to lat_longs.tsv file. Open lat_longs.tsv with a text edditor (like [ATOM](https://atom.io)) and find the correct place (names are in alphabetical order) to add:
+Note that there is a tab between the word 'location' and 'Cancun'. Because you added a new name to color_ordering.pl, you will have to add this name also to lat_longs.tsv file. Open lat_longs.tsv with a text edditor (like [ATOM](https://atom.io)) and find the correct place (names are in alphabetical order) to add:
 
 ```
-location	Huixtla	15.13	-92.46
+location	Cancun	21.16	-86.82
 ```
 
-Note that the fields are separated by tabs. You can find the coordinates from 'Huixtla' through its [Wikipedia](https://es.wikipedia.org/wiki/Huixtla) page of the city and then clicking on its geographic coordinates: 15°08′00″N 92°28′00″O. This will take you to a [GeoHack page](https://geohack.toolforge.org/geohack.php?language=es&pagename=Huixtla&params=15.133333333333_N_-92.466666666667_E_type:city) where you can find the coordinates in decimal. You will need to do the same for all names you add to color_ordering.tsv. 
+Note that the fields are separated by tabs. You can find the coordinates from 'Cancun' through its [Wikipedia](https://es.wikipedia.org/wiki/Cancún) page of the city and then clicking on its geographic coordinates: 21°09′41″N 86°49′29″O. This will take you to a [GeoHack page](https://geohack.toolforge.org/geohack.php?language=es&pagename=Cancún&params=21.161416111111_N_-86.824811111111_E_type:city) where you can find the coordinates in decimal. You will need to do the same for all names you add to color_ordering.tsv. 
 
 #### Case 2: the name in metadata.tsv is not spelled correctly
 
-In some occasions the geographic locality is in metadata.tsv and in color_ordering.tsv (and in lat_longs.tsv), but it is written in a different language between files or the name in one of the files has some typos. Lets take a look at: 'Aguascalientes / Pabello de A'. If you google 'Aguascalientes Pabello de A' you will find that 'Pabello de A' refers to a small city named 'Pabellón de Arteaga' in the State of 'Aguascalientes'. Therefore, you have to substitute 'Pabello de A' by 'Pabellón de Arteaga' in metadata.tsv. To do this, open the file substitute_proposal_round1.tsv with a text editor (like [ATOM](https://atom.io)) and find the row containing 'Pabello de A'. Then substitute 'Pabello de A' by 'Pabellón de Arteaga' in the third column (do not remove the single quotes nor the spaces between the slashes /). Example:
+In some occasions the geographic locality is in metadata.tsv and in color_ordering.tsv (and in lat_longs.tsv), but it is written in a different language between files or the name in one of the files has some typos. Lets take a look at: 'Aguascalientes / Pabello de A'. If you google 'Aguascalientes Pabello de A' you will find that 'Pabello de A' refers to a small city named 'Pabellon de Arteaga' in the State of 'Aguascalientes'. Therefore, you have to substitute 'Pabello de A' by 'Pabellon de Arteaga' in metadata.tsv. To do this, open the file substitute_proposal_round1.tsv with a text editor ([ATOM](https://atom.io)) and find the row containing 'Pabello de A'. Then substitute 'Pabello de A' by 'Pabellon de Arteaga' in the third column (do not remove the single quotes nor the spaces between the slashes /). Example:
 
 ```
-'Pabello de A'  'North America / Mexico / Aguascalientes / Pabello de A'  'North America / Mexico / Aguascalientes / Pabellón de Arteaga'
+'Pabello de A'  'North America / Mexico / Aguascalientes / Pabello de A'  'North America / Mexico / Aguascalientes / Pabellon de Arteaga'
 ```
 
-Later on, the script substitute_names.pl will read this file and will create a new file named outfile.tsv in which the data in the third column will be used to fill the field were the sample was collected. The file outfile.tsv will be identical to the original metadata.tsv file in everithing else. In addition to the above, check if 'Pabellón de Arteaga' is in color_ordering.tsv. If not, you will have to add this name to color_ordering.tsv and lat_longs.tsv as described above. You will do the same for all the names you would like to modify in the metadata. 
+In addition to the above, check if 'Pabellon de Arteaga' is in color_ordering.tsv and lat_longs.tsv. If not, you will have to add this name to both files as described above. 
 
 #### Case 3: a name is repeated in different geographical contexts
 
-Now we will review the second part of the output of compare_names.pl. Take a look to the case of 'Altamira'. In Mexico there are two cities with the name 'Altamira', one is in the state of 'Nuevo Leon' and the other is in the state of 'Tamaulipas'. Because of this, we will have to change the name of the cities to differentiate one from the other. One possibility is to name the cities as 'Altamira Nuevo Leon' and 'Atlamira Tamaulipas'. Use the third column in the file substitute_proposal_round1.tsv as explained before to change these names. In addition, the names of 'Altamira Nuevo Leon' and 'Altamira Tamaulipas' do not exist in color_ordering.tsv, so we have to add these names to this file and to lat_longs.tsv.
+Now we will review the second part of the output of compare_names.pl. Take a look to the case of 'Guadalupe'. In Mexico there are two cities with the name 'Guadalupe', one is in the state of 'Nuevo Leon' and the other is in the state of 'Zacatecas'. Because of this, we will have to change the name of the cities to differentiate one from the other. One possibility is to name the cities as 'Guadalupe (Nuevo Leon)' and 'Guadalupe (Zacatecas)'. Use the third column in the file substitute_proposal_round1.tsv as explained before to change these names. In addition, add the names of 'Guadalupe (Nuevo Leon)' and 'Guadalupe (Zacatecas)' to color_orderin.tsv and their geographic coordinates to lat_longs.tsv.
 
-One final thing, you do not need to erase those rows in the file substitute_proposal_round1.tsv that have the same data in the second and third column, the script will ignore them. 
+Just remember, the idea is that all names in metadata.tsv have a match in color_ordering.tsv and lat_longs.tsv files.
 
 #### Create a new metadata.tsv file
 
-Once you have finished correcting all the names, run the following script:
+Once you have finished correcting all the names as described above, run the following script:
 
 ```
 $ perl substitute_names.pl metadata.tsv substitute_proposal_round1.tsv
