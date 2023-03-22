@@ -265,9 +265,6 @@ In addition to report the inconsistencies to the screen, compare_names.pl create
 'Rio Grande'	'North America / Mexico / Zacatecas / Rio Grande'	'North America / Mexico / Zacatecas / Rio Grande'
 'Tecate'	'North America / Mexico / Baja California / Tecate'	'North America / Mexico / Baja California / Tecate'
 'Tecate'	'North America / Mexico / Baja California Sur / Tecate'	'North America / Mexico / Baja California Sur / Tecate'
-
-...(many more rows)...
-
 ```
 
 The first column shows the name of the geographic location in metadata.tsv that is lacking in color_ordering.tsv; the second column shows the geographical context of the name; and the third column is identical to the second one. Each column is separated by a tab. By editing and correcting the information in the third column, a new metadata file will be created with the error corrected. Please, rename this file in case you have to do several rounds of curation:
@@ -317,31 +314,129 @@ Just remember, the idea is that all names in metadata.tsv have a match in color_
 Once you have finished correcting all the names as described above, run the following script:
 
 ```
-$ perl substitute_names.pl metadata.tsv substitute_proposal_round1.tsv
+data20230203/
+$ perl substitute_names.pl Mexico.metadata.tsv substitute_proposal_round1.tsv
+------------------------------------------------------------------------
+A substitute_proposal.tsv file was provided: substitute_proposal_round1.tsv
+------------------------------------------------------------------------
+Analysing: Mexico.metadata.tsv
+------------------------------------------------------------------------
+The following names were substituted, please check:
+
+old: 'North America / Mexico / Aguascalientes / Aguasacalientes'
+new: 'North America / Mexico / Aguascalientes / Aguascalientes'
+
+old: 'North America / Mexico / Aguascalientes / Pabello de A'
+new: 'North America / Mexico / Aguascalientes / Pabellon de Arteaga'
+
+old: 'North America / Mexico / Baja California / Ensenada'
+new: 'North America / Mexico / Baja California / Ensenada MX'
+
+old: 'North America / Mexico / Baja California Sur / La Paz'
+new: 'North America / Mexico / Baja California Sur / La Paz MX'
+
+old: 'North America / Mexico / Baja California Sur / Tecate'
+new: 'North America / Mexico / Baja California / Tecate'
+
+old: 'North America / Mexico / CDMX'
+new: 'North America / Mexico / Mexico City'
+
+old: 'North America / Mexico / CMX'
+new: 'North America / Mexico / Mexico City'
+
+old: 'North America / Mexico / Campeche / Carmen'
+new: 'North America / Mexico / Campeche / Ciudad del Carmen'
+
+old: 'North America / Mexico / Chihuahua / Cuauhtemoc'
+new: 'North America / Mexico / Chihuahua / Ciudad Cuauhtemoc'
+
+old: 'North America / Mexico / Ciudad de Mexico'
+new: 'North America / Mexico / Mexico City'
+
+old: 'North America / Mexico / Coahuila / Frontera'
+new: 'North America / Mexico / Coahuila / Frontera MX'
+
+old: 'North America / Mexico / Hidalgo / Cardonal Hgo'
+new: 'North America / Mexico / Hidalgo / Cardonal'
+
+old: 'North America / Mexico / Mexico City / Cuauhtemoc'
+new: 'North America / Mexico / Mexico City / Cuauhtemoc (Mexico City)'
+
+old: 'North America / Mexico / Nuevo Leon / Abasolo Nvo Leon'
+new: 'North America / Mexico / Nuevo Leon / Abasolo (Nuevo Leon)'
+
+old: 'North America / Mexico / Nuevo Leon / Gral. Escobedo'
+new: 'North America / Mexico / Nuevo Leon / Ciudad General Escobedo'
+
+old: 'North America / Mexico / Nuevo Leon / Guadalupe'
+new: 'North America / Mexico / Nuevo Leon / Guadalupe (Nuevo Leon)'
+
+old: 'North America / Mexico / San Luis Potosi / Rioverde'
+new: 'North America / Mexico / San Luis Potosi / Rioverde MX'
+
+old: 'North America / Mexico / Sonora / Nogales'
+new: 'North America / Mexico / Sonora / Nogales MX'
+
+old: 'North America / Mexico / State of Mexico'
+new: 'North America / Mexico / Estado de Mexico'
+
+old: 'North America / Mexico / State of Mexico / Naucalpan de Juarez'
+new: 'North America / Mexico / Estado de Mexico / Naucalpan de Juarez'
+
+old: 'North America / Mexico / State of Mexico / Nicolas Romero'
+new: 'North America / Mexico / Estado de Mexico / Nicolas Romero'
+
+old: 'North America / Mexico / Tabasco / Cardenas'
+new: 'North America / Mexico / Tabasco / Cardenas MX'
+
+old: 'North America / Mexico / Tamaulipas / Altamira'
+new: 'North America / Mexico / Tamaulipas / Altamira (Tamaulipas)'
+
+old: 'North America / Mexico / Veracruz / Cordoba'
+new: 'North America / Mexico / Veracruz / Cordoba MX'
+
+old: 'North America / Mexico / Zacatecas / Calera'
+new: 'North America / Mexico / Zacatecas / Calera MX'
+
+old: 'North America / Mexico / Zacatecas / Guadalupe'
+new: 'North America / Mexico / Zacatecas / Guadalupe (Zacatecas)'
+
+old: 'North America / Mexico / Zacatecas / Rio Grande'
+new: 'North America / Mexico / Zacatecas / Rio Grande MX'
+
+------------------------------------------------------------------------
+Results are written to outfile.tsv.
+Now run compare_names.pl.
+See https://github.com/luisdelaye/CurSa/ for more details.
+------------------------------------------------------------------------
 ```
 
-As mentioned above, this script will output the file: outfile.tsv. This file is an exact copy of metadata.tsv except for those names that were substituted according to the third column in substitute_proposal_round1.tsv. You have to rename the outfile.tsv, in case you need to do several rounds of curation:
+This script will output the file: outfile.tsv. This file is an exact copy of metadata.tsv except for those names that were substituted according to the third column in substitute_proposal_round1.tsv. You have to rename the outfile.tsv, in case you need to do several rounds of curation:
 
 ```
-$ mv outfile.tsv outfile_round1.tsv
+data20230223/
+$ mv outfile.tsv metadata_round1.tsv
 ```
 
 Next, run the script compare_names.pl again, but now on outfile_round1.tsv to see if there are no more mismatches:
 
 ```
-$ perl compare_names.pl color_ordering.tsv outfile_round1.tsv Mexico
+data20230223/
+$ perl compare_names.pl color_ordering.tsv metadata_round1.tsv Mexico
 ```
 
 i) If there were mismatches, go for another round of curation, just remember to rename the new file substitute_proposal.tsv to substitute_proposal_round2.tsv: 
 
 ```
+data20230203/
 $ mv substitute_proposal.tsv substitute_proposal_round2.tsv
 ```
 
-Make the corresponding editions to substitute_proposal_round2.tsv and then apply the script substitute_names.pl:
+Make the corresponding editions to substitute_proposal_round2.tsv and then apply the script substitute_names.pl again:
 
 ```
-$ perl substitute_names.pl outfile_round1.tsv substitute_proposal_round2.tsv
+data20230203/
+$ perl substitute_names.pl metadata_round1.tsv substitute_proposal_round2.tsv
 ```
 
 An so on...
@@ -351,61 +446,24 @@ ii) Alternatively, if there are no more mismatches you should get the following 
 ```
 ------------------------------------------------------------------------
 Part 1
-Are there names in outfile_round1.tsv lacking in color_ordering.tsv?
+Are there names in metadata_round1.tsv lacking in color_ordering.tsv?
 
 ------------------------------------------------------------------------
 Part 2
 Checking if the same name is repeated in different geographic contexts
 
-Warning! the name 'Aguascalientes' is in more than one geographic context:
-North America / Mexico / 'Aguascalientes'
-North America / Mexico / Aguascalientes / 'Aguascalientes'
-
-Warning! the name 'Baja California' is in more than one geographic context:
-North America / Mexico / 'Baja California'
-North America / Mexico / Chiapas / 'Baja California'
-
-Warning! the name 'Campeche' is in more than one geographic context:
-North America / Mexico / 'Campeche'
-North America / Mexico / Campeche / 'Campeche'
-
-Warning! the name 'Chihuahua' is in more than one geographic context:
-North America / Mexico / 'Chihuahua'
-North America / Mexico / Chihuahua / 'Chihuahua'
-
-Warning! the name 'Durango' is in more than one geographic context:
-North America / Mexico / 'Durango'
-North America / Mexico / Durango / 'Durango'
-
-Warning! the name 'Merida' is in more than one geographic context:
-North America / Mexico / 'Merida'
-North America / Mexico / Yucatan / 'Merida'
-
-Warning! the name 'Puebla' is in more than one geographic context:
-North America / Mexico / 'Puebla'
-North America / Mexico / Puebla / 'Puebla'
-
-Warning! the name 'San Luis Potosi' is in more than one geographic context:
-North America / Mexico / 'San Luis Potosi'
-North America / Mexico / San Luis Potosi / 'San Luis Potosi'
-
-Warning! the name 'Veracruz' is in more than one geographic context:
-North America / Mexico / 'Veracruz'
-North America / Mexico / Veracruz / 'Veracruz'
-
-Warning! the name 'Zacatecas' is in more than one geographic context:
-North America / Mexico / 'Zacatecas'
-North America / Mexico / Zacatecas / 'Zacatecas'
+There are no names repeated in different geographic contexts
 ------------------------------------------------------------------------
-All names in outfile_round1.tsv have a match in color_ordering.tsv
+All names in metadata_round1.tsv have a match in color_ordering.tsv
 See https://github.com/luisdelaye/CurSa/ for more details.
 ------------------------------------------------------------------------
 ```
 
-Note that you got several warnings. But they do not represent errors in outfile_round1.tsv since they correspond to those cities that are named as the states in which they are located. Now change the name of the new outfile.tsv to:
+Now change the name of the metadata file that has no inconsistencies:
 
 ```
-$ mv outfile_round1.tsv metadata.e1.tsv
+data20230223/
+$ mv metadata_round1.tsv substituted.metadata.tsv
 ```
 
 #### Checking for the correspondence between color_ordering.tsv and lat_longs.tsv
