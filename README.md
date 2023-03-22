@@ -471,275 +471,379 @@ $ mv metadata_round1.tsv substituted.metadata.tsv
 Next, we are going to check whether all the names in color_ordering.tsv have a coordinate in lat_longs.tsv. For this, run the next script:
 
 ```
-$ perl check_coordinates.pl color_ordering.tsv lat_longs.e1.tsv Mexico
+data20230223/
+$ perl check_coordinates.pl substituted.metadata.tsv color_ordering.tsv lat_longs.tsv Mexico
 ```
 
 And you will get an output similar to the next one:
 
 ```
-The names marked with an (*) lack coordinates in lat_longs.e1.tsv:
+      (*) Localities not in substituted.metadata.tsv that lack coordinates in lat_longs.tsv
+      (**) Localities included substituted.metadata.tsv that lack coordinates in lat_longs.tsv
 
-### Mexico
-# Baja California
-location	Rosarito
-location	Tijuana
-location	Ensenada
-location	Mexicali
-location	Tecate
+      ### Mexico
+      # Baja California
+      location	Rosarito
+      location	Tijuana
+      location	Ensenada
+      location	Mexicali
+      location	Tecate
 
-# Baja California Sur
-location	Los Cabos
+      # Baja California Sur
+      location	Los Cabos
 
-# Nuevo Leon
-location	San Nicolas De Los Garza
-location	Monterrey
-location	Abasolo
-location	Altamira Nuevo Leon
-location	Apodaca
-location	Cadereyta Jimenez
-location	Cerralvo
-location	Cienega de Flores (*)
+      # Sonora
+      location	San Luis Rio Colorado
+      location	Caborca
+      location	Hermosillo
+      location	Obregon
+      location	Cajeme
+      location	Etchojoa
+      location	Nogales (*)
 
+      # Chihuahua
+      location	Ciudad Juarez
+      location	Cuauhtemoc (*)
+      location	Delicias
+
+      # Nuevo Leon
+      location	San Nicolas De Los Garza (**)
+      location	Monterrey
+      location	Abasolo (*)
+      location	Altamira Nuevo Leon (*)
+      location	Apodaca
+      location	Cadereyta Jimenez
+      location	Cerralvo
+      location	Cienega de Flores
+      location	Ciudad Benito Juarez (*)
+      location	Ciudad De Allende (*)
+      location	Ciudad General Escobedo
+      location	Ciudad Sabinas Hidalgo
+      location	Ciudad Santa Catarina
+      location	Estacion Aldama
+      location	Galeana
+      location	Garcia
+      location	General Zuazua
+      location	La Reforma (*)
+      location	Lampazos
+      location	Linares
+      location	Montemorelos
+      location	Pesqueria
+      location	Salinas Victoria
+      location	San Pedro Garza Garcia
+      location	Carmen Nuevo Leon (*)
+
+      # Tamaulipas
+      location	Matamoros
+      location	Altamira Tamaulipas (*)
+      location	Mier
+      location	Ciudad Madero
+      location	El Mante
+      location	Nuevo Laredo
+      location	Reynosa
+      location	Tampico
+
+      # Veracruz
+      location	Coyutla
+      location	Atoyac
+      location	Carlos A. Carrillo
+      location	Chicontepec
+      location	Cordoba MX
+      location	Cosamaloapan De Carpio (**)
+      location	Cuitlahuac
+      location	Misantla
+      location	Paso Del Macho (**)
+      location	Soledad De Doblado (**)
+      location	Tierra Blanca
+      location	Xalapa
+
+      # Coahuila
+      location	Acuna (*)
+      location	Castanos (*)
+      location	Frontera (*)
+      location	Monclova
+      location	Saltillo
+      location	Torreon
+
+      # Sinaloa
+      location	Mazatlan
+      location	Culiacan
+      location	Navolato
+      location	Ahome
+      location	Guasave
+      location	Los Mochis
+      location	El Fuerte
+
+      # Durango
+      location	Gomez Palacio
+      location	Cuencame
+      location	Lerdo
+      location	Mapimi
+      location	Tepehuanes
+
+      # Nayarit
+      location	Tepic
+      location	Xalisco
+      location	Tuxpan
+      location	Bahia De Banderas (**)
+      location	Compostela
+
+      # Zacatecas
+      location	Calera (*)
+      location	Fresnillo
+      location	Mazapil
+      location	Miguel Auza
+      location	Momax
+      location	Rio Grande MX
+      location	Sombrerete
+
+      # Aguascalientes
+      location	Asientos
+      location	Calvillo
+      location	Jesus Maria
+      location	Pabellon de Arteaga
+
+      # Jalisco
+      location	Puerto Vallarta
+      location	Zapopan
+      location	Acatic
+      location	El Salto
+      location	Ocotlan
+      location	Poncitlan
+      location	Tamazula De Gordiano (**)
+      location	Tlajomulco De Zuniga (*)
+      location	Tlaquepaque
+      location	Zapotlan El Grande
+
+      # Guanajuato
+      location	Acambaro
+      location	Celaya
+      location	Comonfort
+      location	Dolores Hidalgo Cuna De La Independencia Nacional (**)
+      location	Irapuato
+      location	San Francisco Del Rincon (**)
+      location	Silao
+
+      # San Luis Potosi
+      location	Ahualulco
+      location	Axtla De Terrazas (**)
+      location	Ciudad Valles
+      location	Matehuala
+      location	Rioverde (*)
+      location	San Martin Chalchicuautla
+      location	Tamazunchale
+
+      # Estado de Mexico
+      location	Nicolas Romero
+      location	Atizapan (*)
+      location	Cuautitlan Izcalli
+      location	Ecatepec De Morelos (*)
+      location	Huehuetoca
+      location	Jaltenco
+      location	Metepec
+      location	Nezahualcoyotl
+      location	Tecamac
+      location	Teoloyucan
+      location	Tlalnepantla De Baz (*)
+      location	Toluca
+      location	Tultitlan
+      location	Zinacantepec
+      location	Zumpango
+
+      # Hidalgo
+      location	Acatlan
+      location	Ajacuba
+      location	Cardonal
+      location	El Arenal Hidalgo (*)
+      location	Ixmiquilpan
+      location	Mineral Del Chico (**)
+      location	Mixquiahuala De Juarez (**)
+      location	Omitlan De Juarez (**)
+      location	Pachuca De Soto (**)
+      location	Tasquillo
+      location	Tepeapulco
+      location	Tepeji Del Rio De Ocampo (**)
+      location	Tizayuca
+      location	Tulancingo De Bravo (**)
+      location	Zimapan
+
+      # Mexico City
+      location	Chimalhuacan
+      location	Alvaro Obregon
+      location	Gustavo A. Madero
+
+      # Puebla
+      location	Atlixco
+      location	Chignautla
+      location	Teziutlan
+
+      # Tlaxcala
+      location	Calpulalpan
+
+      # Michoacan
+      location	Lazaro Cardenas
+      location	Morelia
+      location	Patzcuaro
+      location	Taretan
+
+      # Tabasco
+      location	Huimanguillo
+      location	Centla
+      location	Cardenas
+      location	Centro
+      location	Nacajuca
+
+      # Campeche
+      location	Calkini
+      location	Carmen Campeche (*)
+
+      # Yucatan
+      location	Merida
+      location	Kanasin
+
+      # Quintana Roo
+      location	Cozumel
+      location	Cancun
+      location	Benito Juarez
+      location	Othon P. Blanco
+      location	Solidaridad
+
+      # Chiapas
+      location	Benemerito De Las Americas (**)
+      location	Huixtla
+      location	Tapachula
+      location	Tuxtla Chico
+      location	Tuxtla Gutierrez
+      location	Villa Comaltitlan
+
+      ### Mexico
+      division	Baja California
+      division	Baja California Sur
+      division	Sonora
+      division	Sinaloa
+      division	Chihuahua
+      division	Nayarit
+      division	Durango
+      division	Colima
+      division	Jalisco
+      division	Guadalajara
+      division	Zacatecas
+      division	Aguascalientes
+      division	Coahuila
+      division	Michoacan
+      division	Guanajuato
+      division	San Luis Potosi
+      division	Queretaro
+      division	Nuevo Leon
+      division	Guerrero
+      division	Estado de Mexico
+      division	Mexico City
+      division	Mexico
+      division	Hidalgo
+      division	Morelos
+      division	Tamaulipas
+      division	Puebla
+      division	Tlaxcala
+      division	Veracruz
+      division	Oaxaca
+      division	Chiapas
+      division	Tabasco
+      division	Campeche
+      division	Yucatan
+      division	Quintana Roo
 ```
 
-Note that the location 'Cienega de Flores' is marked with an (\*), meaning that there are no coordinates in lat_longs.tsv file for this place. To fix this, simply open lat_longs.tsv and add the geographic coordinates as explined before.
-
-A final tweak to the color_ordering.tsv file is necessary before we go to the next step. Open the color_ordering.tsv file with a text editor (like [ATOM](https://atom.io)) and replace 'Sobral de Monte Agrac O' by 'Sobral de Monte Agraco'. There is a hidden caracter in the last word 'Agrac O' that has to be removed this way. Don't forget to do the same in lat_longs.tsv file. 
+The localities marked with (\*\*) are in color_ordering.tsv and in substituted.metadata.tsv but do not have coordinates in lat_longs.tsv. The coordinates of these localities have to be added to lat_longs.tsv. The localities marked with (\*) are in color_ordering.tsv but not in substituted.metadata.tsv. Therefore, it is not imperative to add them to lat_longs.tsv file.
 
 Now, copy the color_ordering.tsv and lat_longs.tsv files to their directory:
 
 ```
-$ cp color_ordering.tsv  /Users/jose/Software/ncov/defaults/
-$ cp lat_longs.tsv  /Users/jose/Software/ncov/defaults/
+$ cp color_ordering.tsv  ~/Software/ncov/defaults/
+$ cp lat_longs.tsv  ~/Software/ncov/defaults/
 ```
 
-### Format the metadata file for Nextstrain
+### Format sequence and metadata files for Nextstrain
 
-Next, we are going to create the metadata file in the format required for Nextstrain. But first, we need to prepare some files:
-
-```
-$ grep '>' sequences.fasta > sequences.fasta.headers.txt
-$ grep '>' spikeprot####.fasta > spikeprot####.fasta.headers.txt 
-```
-
-Now, run the script format_metadata.pl:
+The next step is to format genome and metadata file. Basically, this script strips the prefix 'hCov-19/' from the strain field of the metadata and from the headers in the fasta sequence file. The script also resolve duplicated strains in the metadata by keeping the most recent one.
 
 ```
-$ perl format_metadata.pl metadata.e1.tsv sequences.fasta.headers.txt spikeprot####.fasta.headers.txt
-```
-
-You will get the following message:
-
-
-```
+data20230223/
+$ perl format.pl substituted.metadata.tsv Mexico.sequences.fasta
 ------------------------------------------------------------------------
-Number of headers in outfile.tsv: 6912788
+Number of entries in formated_metadata.tsv...: 35633
+Number of entries in formated_sequences.fasta: 35633
 ------------------------------------------------------------------------
 ```
 
-This output indicates the number of entries in the new metadata file outfile.tsv. Each entry has its corresponding genome sequence in sequences.fasta.
-Next, rename the outfile.tsv:
+This script output the following files: formated_metadata.tsv, formated_sequences.fasta. These have the proper format for Augur (Nextstrain).
+
+### Sample genome sequences for Nextstrain analysis
+
+Nextstrain can display approximately 5000 sequences. But the focal country may have much more. For instance, at the date of writing there are about 35000 sequences from Mexico. Therefore, it is necessary to sample a set of sequences to make the Nextstrain analysis. Here we provide a script to sample a percentage of N genomes per month. This script uses a random number generator to select which genomes to sample. If you use the same number in subsequent runs in the same files, you will get the same set of sequences. In our example, we will select to sample 10 per cent of genome sequences and use the number 2718 to seed the random number generator. The script also requires a date range.
 
 ```
-$ mv outfile.tsv metadata.e2.tsv 
-```
+data20230223/
+$ perl sample.pl formated_metadata.tsv formated_sequences.fasta 2718 10 2020-01-01 2023-01-01
+------------------------------------------------------------------------
+Sampling report
+Metadata file....................: formated_metadata.tsv
+Sequence file....................: formated_sequences.fasta
+Seed number......................: 2718
+Percentage of sequences to sample: 5
+Genome sequences will be sampled from 2020-01-01 to 2023-01-01
 
-### Sample sequences for Nextstrain analysis
-
-Nextstrain can handle and display approximately 5000 sequences. But you may have much more. For instance, at the date of writing there are about 15000 sequences from Mexico. Therefore, you need to sample a set of sequences to make the Nextstrain analysis. Here we provide a script to sample a percentage of N genomes from each [Pangolin](https://cov-lineages.org/pangolin.html) lineage per month. This script uses a random number generator to select which genomes to sample. If you use the same number in subsequent runs, you will get the same set of sequences. In our example, we will select to sample 5 per cent of genome sequences from each Pangolin lineage per month and use the number 2718 to seed the random number generator.
-
-Before running the script, we have to delete hidden new line characters:
-
-```
-$ perl replace_mc.pl gisaid_hcov-19_2022_##_##.tsv 
-$ mv gisaid_hcov-19_2022_##_##.tsv.e1 gisaid_hcov-19_2022_##_##.e1.tsv 
-```
-
-Now, run the script to sample the sequences:
-
-```
-$ perl sample_genomes_GISAID.pl gisaid_hcov-19_2022_##_##.e1.tsv 2718 5
-```
-
-The script will print to the screen: number of genomes per collection date; number of genomes per Pangolin lineage; number of genomes per clade; and will indicate which genomes were sampled per month per lineage. Next, rename the output:
-
-```
-$ mv outfile.tsv gisaid_hcov-19_2022_##_##.e1.sampled.tsv
-```
-
-Now, you may whant to sample the genomes downloaded from [Nextstrain global analysis](https://nextstrain.org/ncov/gisaid/global). We can us the same seed to generate random numbers and select at most 5 sequences from each Pangolin lineage per month:
-
-```
-$ perl sample_genomes_Nextstrain.pl metadata.e2.tsv nextstrain_ncov_gisaid_global_acknowledgements.tsv 2718 5
-$ mv outfile.tsv nextstrain_ncov_global_metadata.sampled.tsv
-```
-
-The script will print the same statistics as the previous one. Then, rename the output:
-
-```
-$ mv outfile.tsv nextstrain_ncov_gisaid_global.sampled.tsv
-```
-
-### Create the sequence and metadata files for Nextstrain analysis
-
-Now we are going to join those genomes sequences that were sampled in the previous steps (from GISAID and Nextstrain) into a single file for Nextstrain analysis. Their associated metadata will be joined too into a single metadata file. This will take a while...
-
-```
-$ perl join_sampled_genomes.pl gisaid_hcov-19_2022_##_##.e1.sampled.tsv nextstrain_ncov_gisaid_global.sampled.tsv metadata.e2.tsv sequences.fasta
-out: outfile.tsv, outfile.fasta
-$ mv outfile.tsv metadata.sampled.tsv
-$ mv outfile.fasta sequences.sampled.fasta
-```
-
-Now, check wheter the sequences used as external group by Nextstrain are among those that are selected:
-
-```
-$ grep 'EPI_ISL_402125' metadata.sampled.tsv 
-$ grep 'EPI_ISL_406798' metadata.sampled.tsv 
-```
-
-If they are not, includ them with the following script:
-
-```
-$ perl add_outgroup.pl metadata.sampled.tsv
-$ mv outfile.tsv metadata.sampled.tsv
-$ cat sequences.sampled.fasta EPI_ISL_402125.fasta EPI_ISL_406798.fasta > outfile.fasta
-$ mv outfile.fasta sequences.sampled.fasta
-```
-
-Note that you have to download the sequences EPI_ISL_402125 and EPI_ISL_406798 from [GISAID](https://www.gisaid.org) before concatenating the fasta files. Make sure that the sequence EPI_ISL_402125 contains the FASTA header: >hCoV-19/Wuhan/Hu-1/2019|2019-12-31|2020-01-12; and the sequence EPI_ISL_406798 contains the FASTA header >hCoV-19/Wuhan/WH01/2019|2019-12-26|2020-01-30.
-
-Now, a final tweaks to the metadata and sequences file:
-
-```
-$ perl substitute_outgroup_name.pl metadata.sampled.tsv
-
-bingo!
-The sequence:
-hCoV-19/Wuhan/Hu-1/2019|2019-12-31|2020-01-12
-was substituted by: Wuhan/Hu-1/2019
-
-bingo!
-The sequence:
-hCoV-19/Wuhan/WH01/2019|2019-12-26|2020-01-30
-was substituted by: Wuhan/WH01/2019
+Do you want to continue? (y/n)
+y
+------------------------------------------------------------------------
+Sampling genome sequences
 
 ------------------------------------------------------------------------
-The IDs of both outgroups were changed successfully
-------------------------------------------------------------------------
-
-$ mv outfile metadata.sampled.tsv
-$ perl substitute_outgroup_name.pl sequences.sampled.fasta
-
-bingo!
-The sequence:
-hCoV-19/Wuhan/Hu-1/2019|2019-12-31|2020-01-12
-was substituted by: Wuhan/Hu-1/2019
-
-bingo!
-The sequence:
-hCoV-19/Wuhan/WH01/2019|2019-12-26|2020-01-30
-was substituted by: Wuhan/WH01/2019
+Making the fasta file
 
 ------------------------------------------------------------------------
-The IDs of both outgroups were changed successfully
+Number of genomes sampled in metadata..: 3564
+Number of genomes sampled in fasta file: 3564
 ------------------------------------------------------------------------
 
-$ mv outfile sequences.sampled.fasta
 ```
 
-The above step is required because Nextstrain requires the outgroup sequences to have the names: Wuhan/WH01/2019 and Wuhan/Hu-1/2019. 
+This script outputs the following files: sampled_metadata.tsv, sampled_sequences.fasta and sampled_report.txt. The metadata and sequence files are ready for August.
 
-Now, check whether there are hiden characters in the sequence file:
+### Make the phylogenetic analysis with Augur
 
-```
-$ perl replace_mc.pl sequences.sampled.fasta
-$ mv sequences.sampled.fasta.e1 sequences.sampled.fasta
-```
+To contextualize the sequences from a focal country, yo can use the Genbank sequences provided by Nextstrain team:
 
-And finally:
+  https://docs.nextstrain.org/projects/ncov/en/latest/reference/remote_inputs.html
 
-```
-$ perl veryfinaltweak.pl metadata.sampled.tsv sequences.sampled.fasta
-$ mv outfile.fasta sequences.sampled.fasta
-$ mv outfile.tsv metadata.sampled.tsv
-```
+In this case, we used the Global sample in the yaml configure file. See these web pages to know how to do it:
 
-With this, you have the sequence and the metadata files required to run a Nextstrain analysis:
+  https://docs.nextstrain.org/projects/ncov/en/latest/tutorial/custom-data.html
+  https://docs.nextstrain.org/projects/ncov/en/latest/tutorial/genomic-surveillance.html
+
+Move the metadata and sequence files to the data/ directory within the local Nextstrain installation:
 
 ```
-metadata.sampled.tsv
-sequences.sampled.fasta
+data20230223/
+$ cp sampled_metadata.tsv ~/Software/ncov/data/
+$ cp sampled_sequences.fasta ~/Software/ncov/data/
 ```
 
-Copy these files to the proper location within your Nextstrain local installation (in my case this is):
+And move the color_ordering.tsv and lat_longs.tsv to the defaults/ directory:
 
 ```
-$ cp metadata.sampled.tsv /Users/jose/Software/ncov/data/
-$ cp sequences.sampled.fasta /Users/jose/Software/ncov/data/
+data20230223/
+$ cp color_ordering.tsv ~/Software/ncov/defaults/color_ordering.tsv
+$ cp lat_longs.tsv ~/Software/ncov/defaults/lat_longs.tsv
 ```
 
-Configure the files builds.yaml, config.yaml, my_auspice_config.json, my_description.md that live within ncov/my_profiles/yourprofileforthisrun/.
-
-But we haven't finished yet. You may want to tell Nextstrain to include in the analysis all the sequences you sampled from the chosen country (in this case Mexico) you which to focus on. For this, you can use the following script:
+And then run Nextstrain:
 
 ```
-$ perl select_sequences_to_include.pl sequences.sampled.fasta Mexico > add_to_the_include_file.txt
+~/Software/ncov
+$ nextstrain build . --cores all --configfile Mexstrain/Mexstrain-data.yaml
 ```
 
-Now you simply add the names of the sequences in the file add_to_the_include_file.txt to the file ncov/defaults/include.txt. If you do not add these sequence names to include.txt, Nextstrain will sample from your sample, and this may not be what you want.
-
-Now, run Nextstrain!
-
-```
-$ conda activate nextstrain
-$ nextstrain build . --cores all --configfile my_profiles/yourprofileforthisrun/config.yaml
-```
-
-### Optional: add columns to the metadata file
-
-If you like, yo can add special columns to the metadata file. Just run:
-
-```
-#$ perl add_columns_to_metadata.pl metadata.sampled.tsv
-#$ mv outfile.tsv metadata.sampled.tsv
-```
-Of course, you have to do the above step just before copying the metadata file to: /Users/jose/Software/ncov/data/.
-
-By default, the script will add a column named VOC where the [Variants of Concern](https://cov-lineages.org/lineage_list.html) will be indicated (Alpha, Beta, Gamma, Delta and Omicron). You can modify the behavior of the script by opening with a text editor (like [ATOM](https://atom.io)) and changing the following section:
-
-```
-				#-----------------------------------------------------------------------
-				# Here you can modify the options to add the column you want
-				# VOC
-				if ($a[15] eq 'B.1.1.7'){
-					print ROB ("$a[$i]\tAlpha\n");
-				} elsif ($a[15] eq 'B.1.351'){
-					print ROB ("$a[$i]\tBeta\n");
-				} elsif ($a[15] eq 'P.1'){
-					print ROB ("$a[$i]\tGamma\n");
-				} elsif ($a[15] eq 'B.1.617.2' || $a[15] =~ /^AY\.[\d\.]+$/){
-					print ROB ("$a[$i]\tDelta\n");
-				} elsif ($a[15] eq 'B.1.1.529' || $a[15] eq 'BA.1' || $a[15] eq 'BA.1.1'
-				 			|| $a[15] eq 'BA.2' || $a[15] eq 'BA.3'){
-					print ROB ("$a[$i]\tOmicron\n");
-				} else {
-					print ROB ("$a[$i]\tother\n");
-				}
-				#-----------------------------------------------------------------------
-```
-
-Because the script add_columns_to_metadata.pl adds the column VOC to the metadata file, you will need to modify the my_auspice_config.json file. You can find this file in one of the folders of: ncov/my_profiles/. Open the file and add where properly:
-
-```
-    {
-      "key": "VOC",
-      "title": "Variants of concern",
-      "type": "categorical"
-    },
-```
-
-## Microreact
+## Create the files for Microreact
 -----
 
 If you would like to visualize the above sequences in [Microreact](https://microreact.org/showcase) follow these instructions. First, you will need the metadata file created above (metadata.sampled.tsv) and three files from Nextstrain (lat_longs.tsv, aligned.fasta, tree_raw.nwk). Copy the ncov/defaults/lat_longs.tsv file to your working directory and change its name to lat_longs.e1.tsv. Open this file with a text editor and at the bottom of it, add the following:
