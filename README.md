@@ -874,5 +874,5 @@ Note: single quotes "'" in the name of the sequences are transformed to undersco
 <p align="center">
   <img width="707.5" height="371.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_CurSa_4.png">
 </p>
-Figure 6. Microreact visualization of SARS-CoV-2 genome sequences.
+Figure 4. Microreact visualization of SARS-CoV-2 genome sequences.
 
