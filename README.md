@@ -811,7 +811,7 @@ This script outputs the following files: sampled_metadata.tsv, sampled_sequences
 
 ### Make the phylogenetic analysis with Augur
 
-To contextualize the sequences from a focal country, yo can use the Genbank sequences provided by Nextstrain team:
+It is convinient to contextualize the sequences of the focal country with sequences from other parts of the world. To contextualize the sequences from a focal country, yo can use the Genbank sequences provided by Nextstrain team:
 
   https://docs.nextstrain.org/projects/ncov/en/latest/reference/remote_inputs.html
 
@@ -846,7 +846,7 @@ $ nextstrain build . --cores all --configfile Mexstrain/Mexstrain-data.yaml
 ## Create the files for Microreact
 -----
 
-If you would like to visualize the above sequences in [Microreact](https://microreact.org/showcase) follow these instructions. First, you will need the metadata file created above (metadata.sampled.tsv) and three files from Nextstrain (lat_longs.tsv, aligned.fasta, tree_raw.nwk). Copy the ncov/defaults/lat_longs.tsv file to your working directory and change its name to lat_longs.e1.tsv. Open this file with a text editor and at the bottom of it, add the following:
+If you would like to visualize the above sequences in [Microreact](https://microreact.org/showcase) follow these instructions. First, you will need the metadata file created above (sampled_metadata.tsv) and three files from Nextstrain (lat_longs.tsv, aligned.fasta, tree_raw.nwk). Make a copy of the lat_longs.tsv file to the name lat_longs.e1.tsv. Open this file with a text editor and at the bottom of it, add the following:
 
 ```
 region	Africa	4.070194	21.824559
@@ -857,51 +857,22 @@ region	Oceania	-25.0562891	152.008576
 region	South America	-13.083583	-58.470721
 ```
 
-Now, you have to localize were is the aligned.fasta file in your computer. The aligned.fasta file is the result of running Nextstrain on a given set of sequences. It contains tha alignment of the sequences that will be displyed in auspice. For instance, in the example above, the file in my computer is in: ncov/results/global-mex/aligned.fasta. You can copy this file to your working directory. Once you localized this file, run the following script:
+Now, you have to localize were is the aligned.fasta file in your computer. The aligned.fasta file is the result of running Nextstrain on a given set of sequences. It contains tha alignment of the sequences that will be displyed in auspice. For instance, in the example above, the file in my computer is in: ncov/results/custom-build/aligned.fasta. You can copy this file to your working directory. Once you localized this file, run the following script:
 
 ```
-$ perl create_microreact.pl lat_longs.e1.tsv aligned.fasta metadata.sampled.tsv Mexico
-$ mv outfile.tsv metadata.sampled.mr.tsv 
-$ mv outfile_subset.tsv metadata.sampled.mrMexico.tsv
+data20230203/
+$ cp ~/Software/ncov/results/custom-build/aligned.fasta
+$ perl create_microreact.pl lat_longs.e1.tsv aligned.fasta sampled_metadata.tsv
 ```
 
-The above script will create three files: outfile.tsv, outfile_subset.tsv. The first file contains the table required by Microreact with all the sequences found in metadata.sampled.tsv. The second file contains the table required by Microreact only with the sequences from the country of selection (in this case Mexico). 
+The above script will create the file: outfile_for_microreact.tsv. This file contains the table required by Microreact with all the sequences found in sampled_metadata.tsv. 
 
-Now you can go to [Microreact](https://microreact.org/showcase) and upload the metadata.sampled.mr.tsv and the tree_raw.nwk to visualize your data (Figure 6). You can find the tree_raw.nwk in /ncov/results/global-mex/. The tree_raw.nwk file contains a phylogeny of all the sequences in aligned.fasta.
+Now you can go to [Microreact](https://microreact.org/showcase) and upload the sampled_metadata.tsv and the tree_raw.nwk to visualize your data (Figure 6). You can find the tree_raw.nwk in /ncov/results/custom-build/. The tree_raw.nwk file contains a phylogeny of all the sequences in aligned.fasta.
 
-Note: single quotes "'" in the name of the sequences are transformed to underscores _ in the names of the sequences in the tree. For instance, the sequence name in metadata: Lu'an/5073Y is transformed to Lu_an/5073Y in tree_raw.nwk. If you have sequence names with single quotes, simply open the outfile.tsv with a text editor and remplace the single quote by an underscore. In the example above, just open the outfile.tsv file with a text editor and rename the sequence Lu'an/5073Y to Lu_an/5073Y. Otherwise Microreact will not work.
+Note: single quotes "'" in the name of the sequences are transformed to underscores _ in the names of the sequences in the tree. If you have sequence names with single quotes, simply open the outfile_for_microreact.tsv with a text editor and remplace the single quote by an underscore. Otherwise Microreact will not work.
 
 <p align="center">
-  <img width="707.5" height="371.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure-6-CurSa.png">
+  <img width="707.5" height="371.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_CurSa_6.png">
 </p>
-Figure 6. Microreact visualization of sequences.
-
-
-
-If you would like to visualize in [Microreact](https://microreact.org/showcase) only those sequences from the selected country (Mexico) altogether with a phylogenetic tree, follow the next instructions. You will need to run the script:
-
-```
-$ perl exstract_secs.pl metadata.sampled.mrMexico.tsv aligned.fasta
-$ mv outfile metadata.sampled.mrMexico.fasta
-```
-
-This will create a file named outfile that contains the sequences whose ids are found in outfile_subset.tsv. This is, all the sequences from Mexico originaly found in metadata.sampled.tsv. Rename this file to metadata.sampled.mrMexico.fasta. Then run [iqtree](http://www.iqtree.org) to infer a phylogenetic tree:
-
-```
-$ iqtree -s metadata.sampled.mrMexico.fasta -m GTR+I+G
-```
-
-Now add the extension nwk to the phylogeny file and upload the phylogeny and the metadata.sampled.mrMexico.tsv files to [Microreact](https://microreact.org/showcase).
-
-### Display all sequences from a country in Microreact
-
-You may want to display all sequences from a country in Microreact. For this, you will need the metadata.e2.tsv file and the following script:
-
-```
-$ perl create_microreact_all.pl lat_longs.e1.tsv metadata.e2.tsv Mexico
-$ mv outfile_all.tsv metadata.mrMexico.tsv
-```
-
-The above script will create the file outfile_all.tsv. Simply upload this (metadata.mrMexico.tsv) file to [Microreact](https://microreact.org/showcase). Because the number of genomes is usually very high, it is not practical to do a phylogenetic analysis.
-
+Figure 6. Microreact visualization of SARS-CoV-2 genome sequences.
 
