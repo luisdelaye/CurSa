@@ -867,12 +867,12 @@ $ perl create_microreact.pl lat_longs.e1.tsv aligned.fasta sampled_metadata.tsv
 
 The above script will create the file: outfile_for_microreact.tsv. This file contains the table required by Microreact with all the sequences found in sampled_metadata.tsv. 
 
-Now you can go to [Microreact](https://microreact.org/showcase) and upload the sampled_metadata.tsv and the tree_raw.nwk to visualize your data (Figure 6). You can find the tree_raw.nwk in /ncov/results/custom-build/. The tree_raw.nwk file contains a phylogeny of all the sequences in aligned.fasta.
+Now you can go to [Microreact](https://microreact.org/showcase) and upload the sampled_metadata.tsv and the tree_raw.nwk to visualize your data (Figure 4). You can find the tree_raw.nwk in /ncov/results/custom-build/. The tree_raw.nwk file contains a phylogeny of all the sequences in aligned.fasta.
 
 Note: single quotes "'" in the name of the sequences are transformed to underscores _ in the names of the sequences in the tree. If you have sequence names with single quotes, simply open the outfile_for_microreact.tsv with a text editor and remplace the single quote by an underscore. Otherwise Microreact will not work.
 
 <p align="center">
-  <img width="707.5" height="371.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_CurSa_6.png">
+  <img width="707.5" height="371.5" src="https://github.com/luisdelaye/CurSa/blob/main/Figure_CurSa_4.png">
 </p>
 Figure 6. Microreact visualization of SARS-CoV-2 genome sequences.
 
